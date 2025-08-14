@@ -78,8 +78,8 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
       <div className="grid">
         {lastByGame.reaction && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>反应时（越低越好）</div>
-            <MiniBars current={Math.round(lastByGame.reaction.reaction.averageMs)} avg={Math.round(rtAvg7)} labels={["本次均值(ms)", "7日均值(ms)"] as any} />
+            <div className="muted" style={{ fontSize: 12 }}>Reaction (lower is better)</div>
+            <MiniBars current={Math.round(lastByGame.reaction.reaction.averageMs)} avg={Math.round(rtAvg7)} labels={["Current (ms)", "7d avg (ms)"] as any} />
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
               <tbody>
@@ -92,8 +92,8 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
         {lastByGame.aim && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>点靶命中（越高越好）</div>
-            <MiniBars current={lastByGame.aim.aim.hits} avg={Math.round(aimAvg7)} labels={["本次命中", "7日均值"] as any} />
+            <div className="muted" style={{ fontSize: 12 }}>Aim hits (higher is better)</div>
+            <MiniBars current={lastByGame.aim.aim.hits} avg={Math.round(aimAvg7)} labels={["Current", "7d avg"] as any} />
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
               <tbody>
@@ -107,8 +107,8 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
         {lastByGame.taps && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>点击速度（越高越好）</div>
-            <MiniBars current={lastByGame.taps.taps.taps} avg={Math.round(tapsAvg7)} labels={["本次", "7日均值"] as any} />
+            <div className="muted" style={{ fontSize: 12 }}>Tap speed (higher is better)</div>
+            <MiniBars current={lastByGame.taps.taps.taps} avg={Math.round(tapsAvg7)} labels={["Current", "7d avg"] as any} />
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
               <tbody>
@@ -121,7 +121,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
         {lastByGame.crt && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>多选反应（CRT）</div>
+            <div className="muted" style={{ fontSize: 12 }}>Choice Reaction (CRT)</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
               <tbody>
@@ -134,7 +134,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
         {lastByGame.stroop && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Stroop 干扰</div>
+            <div className="muted" style={{ fontSize: 12 }}>Stroop</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
               <tbody>
@@ -161,7 +161,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
         {lastByGame.posner && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Posner 注意定向</div>
+            <div className="muted" style={{ fontSize: 12 }}>Posner Cue</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
               <tbody>
@@ -175,7 +175,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
         {lastByGame.sst && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Stop-Signal 抑制</div>
+            <div className="muted" style={{ fontSize: 12 }}>Stop-Signal</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
               <tbody>
@@ -189,16 +189,16 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
       </div>
       <div className="card panel">
-        <div className="muted" style={{ fontSize: 12 }}>改进建议</div>
+        <div className="muted" style={{ fontSize: 12 }}>Recommendations</div>
         <ul className="muted" style={{ fontSize: 14, display: 'grid', gap: 6 }}>
-          <li>保持每日练习，优先保障睡眠与间歇，避免疲劳训练。</li>
-          <li>反应时若高于7日均值，下一轮将缩短反应提示间隔并减少干扰。</li>
-          <li>点靶命中率若低于均值，建议先降低目标半径与并发数，再逐步提高。</li>
-          <li>点击速度可采用更短时间窗口（3s）冲刺，专注节奏稳定性。</li>
+          <li>Practice daily; prioritize sleep and rest.</li>
+          <li>If RT > 7d average, shorten cue interval and reduce distractions next round.</li>
+          <li>If aim accuracy below average, increase target size then ramp difficulty.</li>
+          <li>For tap speed, try short (3s) sprints and focus on rhythm stability.</li>
         </ul>
       </div>
       <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-        <button className="btn" onClick={onRestart}>重新开始一轮</button>
+        <button className="btn" onClick={onRestart}>Restart</button>
       </div>
     </div>
   );

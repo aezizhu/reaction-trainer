@@ -59,47 +59,47 @@ export default function Insights() {
               </div>
               {r.reaction && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  平均反应时：{Math.round(r.reaction.averageMs)}ms，最佳：{Math.round(r.reaction.bestMs)}ms
+                  Avg RT: {Math.round(r.reaction.averageMs)} ms, Best: {Math.round(r.reaction.bestMs)} ms
                 </div>
               )}
               {r.aim && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  命中：{r.aim.hits}，准确率：{Math.round(r.aim.accuracy)}%（{r.aim.timeSec}s）
+                  Hits: {r.aim.hits}, Accuracy: {Math.round(r.aim.accuracy)}% ({r.aim.timeSec}s)
                 </div>
               )}
               {r.sequence && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  达到层级：{r.sequence.level}，最长：{r.sequence.longest}
+                  Level: {r.sequence.level}, Longest: {r.sequence.longest}
                 </div>
               )}
               {r.gng && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Go正确率：{Math.round(r.gng.goAcc)}%，No-Go正确率：{Math.round(r.gng.nogoAcc)}%，平均RT：{Math.round(r.gng.avgRtMs)}ms
+                  Go Acc: {Math.round(r.gng.goAcc)}%, No-Go Acc: {Math.round(r.gng.nogoAcc)}%, Avg RT: {Math.round(r.gng.avgRtMs)} ms
                 </div>
               )}
               {r.stroop && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Cong：{Math.round(r.stroop.congruentAvgMs)}ms，Incong：{Math.round(r.stroop.incongruentAvgMs)}ms，成本：{Math.round(r.stroop.costMs)}ms，准确率：{Math.round(r.stroop.accuracy)}%
+                  Cong: {Math.round(r.stroop.congruentAvgMs)} ms, Incong: {Math.round(r.stroop.incongruentAvgMs)} ms, Cost: {Math.round(r.stroop.costMs)} ms, Acc: {Math.round(r.stroop.accuracy)}%
                 </div>
               )}
               {r.taps && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  点击：{r.taps.taps}（{r.taps.seconds}s），平均间隔：{Math.round(r.taps.avgIntervalMs)}ms
+                  Taps: {r.taps.taps} ({r.taps.seconds}s), Avg Interval: {Math.round(r.taps.avgIntervalMs)} ms
                 </div>
               )}
               {r.posner && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  有效：{Math.round(r.posner.validAvgMs)}ms，无效：{Math.round(r.posner.invalidAvgMs)}ms，成本：{Math.round(r.posner.costMs)}ms，准确率：{Math.round(r.posner.accuracy)}%
+                  Valid: {Math.round(r.posner.validAvgMs)} ms, Invalid: {Math.round(r.posner.invalidAvgMs)} ms, Cost: {Math.round(r.posner.costMs)} ms, Acc: {Math.round(r.posner.accuracy)}%
                 </div>
               )}
               {r.sst && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  SSD：{Math.round(r.sst.avgSsdMs)}ms，SSRT：{Math.round(r.sst.ssrtMs)}ms，Stop成功率：{Math.round(r.sst.stopSuccessPct)}%，Go准确率：{Math.round(r.sst.goAcc)}%
+                  SSD: {Math.round(r.sst.avgSsdMs)} ms, SSRT: {Math.round(r.sst.ssrtMs)} ms, Stop Success: {Math.round(r.sst.stopSuccessPct)}%, Go Acc: {Math.round(r.sst.goAcc)}%
                 </div>
               )}
               {r.crt && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  选项：{r.crt.choices}，平均RT：{Math.round(r.crt.avgRtMs)}ms，准确率：{Math.round(r.crt.accuracy)}%
+                  Choices: {r.crt.choices}, Avg RT: {Math.round(r.crt.avgRtMs)} ms, Acc: {Math.round(r.crt.accuracy)}%
                 </div>
               )}
             </div>
@@ -108,13 +108,13 @@ export default function Insights() {
       </section>
 
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div style={{ fontWeight: 800 }}>生活方式建议（辅助提升反应力）</div>
+        <div style={{ fontWeight: 800 }}>Lifestyle tips (general)</div>
         <ul className="muted" style={{ fontSize: 14, display: 'grid', gap: 6 }}>
-          <li>充足睡眠（7–9小时），规律作息。</li>
-          <li>每周≥150分钟中等强度运动（跑步/骑行/游泳等）。</li>
-          <li>营养均衡（Omega-3、维生素B/E、抗氧化食物）。</li>
-          <li>压力管理（冥想/呼吸/正念），避免过度疲劳训练。</li>
-          <li>交替进行不同训练，避免单一刺激习惯化。</li>
+          <li>Sleep 7–9 hours; maintain regular schedule.</li>
+          <li>Exercise ≥150 minutes/week at moderate intensity.</li>
+          <li>Balanced nutrition; consider Omega-3 and vitamins.</li>
+          <li>Stress management (meditation/breathing/mindfulness).</li>
+          <li>Alternate different trainings to avoid habituation.</li>
         </ul>
       </section>
     </div>
