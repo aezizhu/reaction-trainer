@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
+import { useI18n } from '@/contexts/I18nContext';
 
 export default function TapSpeed({ autoMode = false, attempts = 3, onFinish }: { autoMode?: boolean; attempts?: number; onFinish?: () => void } = {}) {
   const { addRecord } = useHistory();
+  const { t } = useI18n();
   const [running, setRunning] = useState(false);
   const [taps, setTaps] = useState(0);
   const [intervals, setIntervals] = useState<number[]>([]);
@@ -59,20 +61,20 @@ export default function TapSpeed({ autoMode = false, attempts = 3, onFinish }: {
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">Tap Speed 点击速度</div>
-        <div className="muted" style={{ fontSize: 14 }}>5秒内尽可能多的点击（或空格）。训练手指协调与节奏稳定性。</div>
+        <div className="title">{t('game.taps')}</div>
+        <div className="muted" style={{ fontSize: 14 }}>Tap as fast as possible within 5 seconds (or press Space). Focus on rhythm stability.</div>
         <div className="row">
-          <Tile title="点击次数" value={String(taps)} />
-          <Tile title="剩余时间" value={`${left}s`} />
-          {autoMode && <Tile title="轮次" value={`${round}/${attempts}`} />}
-          {autoMode && best && <Tile title="最佳成绩" value={`${best.taps}`} />}
+          <Tile title={t('ui.clicks')} value={String(taps)} />
+          <Tile title={t('ui.timeLeft')} value={`${left}s`} />
+          {autoMode && <Tile title={t('ui.round')} value={`${round}/${attempts}`} />}
+          {autoMode && best && <Tile title={t('ui.best')} value={`${best.taps}`} />}
         </div>
         <div className="card panel" onClick={tap} style={{ height: 220, display: 'grid', placeItems: 'center', userSelect: 'none', cursor: 'pointer' }}>
           <div className="metric">点击这里或按空格</div>
         </div>
         {!autoMode && (
           <div style={{ display: 'flex', gap: 8 }}>
-            {!running ? <button className="btn" onClick={start}>开始</button> : <button className="btn secondary" onClick={() => setRunning(false)}>暂停</button>}
+            {!running ? <button className="btn" onClick={start}>{t('ui.start')}</button> : <button className="btn secondary" onClick={() => setRunning(false)}>{t('ui.pause')}</button>}
           </div>
         )}
       </section>

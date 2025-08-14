@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
 import { loadPrefs } from '@/utils/prefs';
+import { useI18n } from '@/contexts/I18nContext';
 
 type ColorKey = '红' | '绿' | '蓝' | '黄';
 const COLORS: Record<ColorKey, string> = { '红': '#ff5c7a', '绿': '#3ad29f', '蓝': '#5aa9ff', '黄': '#ffcc66' };
@@ -10,6 +11,7 @@ interface Trial { word: ColorKey; color: ColorKey; congruent: boolean }
 
 export default function Stroop({ autoMode = false, onFinish }: { autoMode?: boolean; onFinish?: () => void } = {}) {
   const { addRecord } = useHistory();
+  const { t } = useI18n();
   const [running, setRunning] = useState(false);
   const [idx, setIdx] = useState(0);
   const [trial, setTrial] = useState<Trial | null>(null);
@@ -75,10 +77,10 @@ export default function Stroop({ autoMode = false, onFinish }: { autoMode?: bool
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">Stroop 颜色-词义干扰</div>
-        <div className="muted" style={{ fontSize: 14 }}>按键：D=红 F=绿 J=蓝 K=黄。根据“字体颜色”作答，而非词义。</div>
+        <div className="title">Stroop</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('stroop.rules')}</div>
         <div className="row">
-          <Tile title="进度" value={`${Math.min(idx, total)}/${total}`} />
+          <Tile title={t('ui.progress')} value={`${Math.min(idx, total)}/${total}`} />
         </div>
         <div
           ref={panelRef}
@@ -92,7 +94,7 @@ export default function Stroop({ autoMode = false, onFinish }: { autoMode?: bool
               {trial.word}
             </div>
           ) : (
-            <div className="muted">{running ? '准备下一题...' : '点击开始'}</div>
+            <div className="muted">{running ? t('stroop.readyNext') : t('rt.clickToStart')}</div>
           )}
         </div>
         <div style={{ display: 'flex', gap: 8 }}>

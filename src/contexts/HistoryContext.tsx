@@ -67,72 +67,72 @@ export const HistoryProvider: React.FC<React.PropsWithChildren> = ({ children })
     for (const r of records) totals[r.game] += 1;
 
     const recs: string[] = [];
-    // Basic adaptive tips
+    // Basic adaptive tips (English only; can be localized later)
     const recentReaction = last7d.filter(r => r.game === 'reaction' && r.reaction);
     if (recentReaction.length >= 3) {
       const avg = recentReaction.reduce((s, r) => s + (r.reaction!.averageMs || 0), 0) / recentReaction.length;
-      if (avg > 300) recs.push('反应时均值偏高，建议加入更多“预备信号干扰”的训练，并保持手指放在触控区。');
-      else recs.push('反应时表现不错，尝试减少提示间隔或提高随机性。');
+      if (avg > 300) recs.push('Reaction time average is high; add more forewarning interference and keep fingers ready.');
+      else recs.push('Good reaction time. Try shorter cue intervals or higher randomness.');
     }
 
     const recentAim = last7d.filter(r => r.game === 'aim' && r.aim);
     if (recentAim.length >= 2) {
       const acc = recentAim.reduce((s, r) => s + r.aim!.accuracy, 0) / recentAim.length;
-      if (acc < 75) recs.push('点靶命中率较低，建议降低目标尺寸或延长显示时间进行分步训练。');
-      else recs.push('命中率良好，尝试缩小目标半径或增加并发目标数量。');
+      if (acc < 75) recs.push('Aim accuracy is low; consider larger targets or longer visibility, then ramp up.');
+      else recs.push('Aim accuracy is solid; try smaller targets or more concurrent targets.');
     }
 
     const recentSeq = last7d.filter(r => r.game === 'sequence' && r.sequence);
     if (recentSeq.length >= 2) {
       const lvl = Math.max(...recentSeq.map(r => r.sequence!.level));
-      if (lvl < 6) recs.push('序列记忆层级不高，可采用“分段复述 + 节拍器”策略提升。');
-      else recs.push('序列记忆不错，尝试增加干扰音或加快节奏。');
+      if (lvl < 6) recs.push('Sequence level is modest; try chunking with a metronome.');
+      else recs.push('Sequence memory is good; add auditory distractors or speed up pacing.');
     }
 
     const recentGng = last7d.filter(r => r.game === 'gng' && r.gng);
     if (recentGng.length >= 2) {
       const nogo = recentGng.reduce((s, r) => s + r.gng!.nogoAcc, 0) / recentGng.length;
-      if (nogo < 85) recs.push('抑制错误较多，建议延长No-Go刺激显示时长或降低Go比例。');
-      else recs.push('抑制控制良好，尝试提高Go:No-Go比或缩短ISI。');
+      if (nogo < 85) recs.push('Inhibition errors are frequent; lengthen NO-GO display or lower GO ratio.');
+      else recs.push('Inhibition is good; try higher GO ratio or shorter ISI.');
     }
 
     const recentStroop = last7d.filter(r => r.game === 'stroop' && r.stroop);
     if (recentStroop.length >= 2) {
       const avgCost = recentStroop.reduce((s, r) => s + (r.stroop!.costMs || 0), 0) / recentStroop.length;
-      if (avgCost > 120) recs.push('Stroop 干扰成本较高，建议先专注于颜色维度，降低不一致比例再逐步提高。');
-      else recs.push('Stroop 表现稳定，可提高不一致比例或缩短呈现时间。');
+      if (avgCost > 120) recs.push('Stroop interference cost is high; focus on color dimension first and reduce incongruent ratio.');
+      else recs.push('Stroop performance is stable; increase incongruent ratio or reduce presentation time.');
     }
 
     const recentTaps = last7d.filter(r => r.game === 'taps' && r.taps);
     if (recentTaps.length >= 2) {
       const avgTapsPerSec = recentTaps.reduce((s, r) => s + r.taps!.taps / r.taps!.seconds, 0) / recentTaps.length;
-      if (avgTapsPerSec < 6) recs.push('手指敲击频率偏低，建议进行短时高频点按训练，并注意放松手腕以减少疲劳。');
-      else recs.push('敲击速度不错，可尝试更短时间窗口下的极限训练。');
+      if (avgTapsPerSec < 6) recs.push('Tap frequency is low; try short high-rate bursts and keep the wrist relaxed.');
+      else recs.push('Tap speed is good; try shorter windows for peak bursts.');
     }
 
     const recentPosner = last7d.filter(r => r.game === 'posner' && r.posner);
     if (recentPosner.length >= 2) {
       const avgCost = recentPosner.reduce((s, r) => s + (r.posner!.costMs || 0), 0) / recentPosner.length;
-      if (avgCost > 60) recs.push('注意转换成本较高，建议先提高有效提示比例，逐步引入无效提示。');
-      else recs.push('注意转换良好，可缩短ISI或提高无效提示比例。');
+      if (avgCost > 60) recs.push('Attentional shift cost is high; increase valid cue ratio first, then add invalid cues.');
+      else recs.push('Attentional shifting is good; shorten ISI or raise invalid cue ratio.');
     }
 
     const recentSst = last7d.filter(r => r.game === 'sst' && r.sst);
     if (recentSst.length >= 2) {
       const ssrt = recentSst.reduce((s, r) => s + (r.sst!.ssrtMs || 0), 0) / recentSst.length;
-      if (ssrt > 250) recs.push('抑制时间（SSRT）偏长，建议降低初始SSD并采用小步进自适应，逐步提升难度。');
-      else recs.push('抑制反应良好，可尝试增加Stop比例或扩大SSD步进。');
+      if (ssrt > 250) recs.push('SSRT is long; lower initial SSD and use smaller steps, then ramp difficulty.');
+      else recs.push('Inhibitory control is good; increase stop ratio or enlarge SSD step.');
     }
 
     const recentCrt = last7d.filter(r => r.game === 'crt' && r.crt);
     if (recentCrt.length >= 2) {
       const avgRt = recentCrt.reduce((s, r) => s + (r.crt!.avgRtMs || 0), 0) / recentCrt.length;
       const acc = recentCrt.reduce((s, r) => s + (r.crt!.accuracy || 0), 0) / recentCrt.length;
-      if (acc < 90) recs.push('多选反应准确率偏低，建议降低并发干扰或减少选项数量后再逐步增加。');
-      else recs.push(`多选反应稳定，平均RT≈${Math.round(avgRt)}ms，可加入不兼容映射提高挑战。`);
+      if (acc < 90) recs.push('CRT accuracy is low; reduce concurrent interference or options then increase gradually.');
+      else recs.push(`CRT is stable, avg RT ≈ ${Math.round(avgRt)} ms; try incompatible mappings for challenge.`);
     }
 
-    if (recs.length === 0) recs.push('开始训练吧！完成任意3轮后将生成个性化建议。');
+    if (recs.length === 0) recs.push('Start training! Complete 3+ sessions to unlock personalized insights.');
 
     return { totals, last7d, recommendations: recs };
   }, [records]);

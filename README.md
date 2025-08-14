@@ -1,30 +1,78 @@
-## 反应力训练 Reaction Trainer
+## Reaction Trainer
 
-一个包含多种反应力训练小游戏的前端应用，内置历史记录与个性化建议。
+A multi-game cognitive training web app focused on reaction time, inhibition control, hand-eye coordination, and working memory. It records local history and generates lightweight personalized insights.
 
-- 反应时 Reaction Time
-- 点靶 Aim Trainer
-- 序列记忆 Sequence Memory
-- Go/No-Go 抑制控制
+- Reaction Time
+- Aim Trainer
+- Sequence Memory
+- Go/No-Go
+- Stroop
+- Tap Speed
+- Posner Cue
+- Stop-Signal
+- Choice Reaction (CRT)
 
-### 本地运行
+### Quick Start
 
 ```bash
-pnpm i # 或 npm i / yarn
-pnpm dev # 默认端口 5175
+cd /Users/aezi/CascadeProjects/reaction-trainer
+pnpm i
+pnpm dev  # opens http://localhost:5175
 ```
 
-### 数据持久化
-- 所有记录保存在浏览器 localStorage，键：`reaction_trainer_history_v1`
+If pnpm is not installed:
+```bash
+brew install pnpm
+# or: npm i -g pnpm
+# or: corepack enable && corepack prepare pnpm@latest --activate
+```
 
-### 目录结构
+### Data Persistence
+- All records are stored in browser localStorage under key: `reaction_trainer_history_v1`
+- Preferences are stored under key: `reaction_trainer_prefs_v1`
+
+### Project Structure
 ```
 reaction-trainer/
+  index.html
+  package.json
+  tsconfig.json
+  vite.config.ts
   src/
-    games/
-    pages/
+    main.tsx
+    App.tsx
+    styles/global.css
     contexts/
-    styles/
+      HistoryContext.tsx
+      I18nContext.tsx
+    pages/
+      Home.tsx
+      Insights.tsx
+      Settings.tsx
+      UnifiedTraining.tsx
+    games/
+      ReactionTime.tsx
+      AimTrainer.tsx
+      SequenceMemory.tsx
+      GoNoGo.tsx
+      Stroop.tsx
+      TapSpeed.tsx
+      PosnerCue.tsx
+      StopSignal.tsx
+      ChoiceRT.tsx
 ```
+
+### Internationalization (i18n)
+- Built-in language switcher in the top bar. Supported languages: English (en), Chinese (zh), Spanish (es), Arabic (ar), Russian (ru).
+- Implemented via `src/contexts/I18nContext.tsx` with a small in-app dictionary.
+
+### Build
+```bash
+pnpm build
+```
+
+### License
+MIT
+
 
 

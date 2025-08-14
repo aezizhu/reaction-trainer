@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
 import { loadPrefs } from '@/utils/prefs';
 import { playClick } from '@/utils/sound';
+import { useI18n } from '@/contexts/I18nContext';
 
 // Simplified SST: Go trials (left/right arrow) and occasional Stop signal (beep) after SSD
 export default function StopSignal({ autoMode = false, onFinish }: { autoMode?: boolean; onFinish?: () => void } = {}) {
   const { addRecord } = useHistory();
+  const { t } = useI18n();
   const [running, setRunning] = useState(false);
   const [idx, setIdx] = useState(0);
   const [dir, setDir] = useState<'L'|'R'|null>(null);
@@ -97,11 +99,11 @@ export default function StopSignal({ autoMode = false, onFinish }: { autoMode?: 
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">Stop-Signal 抑制训练</div>
-        <div className="muted" style={{ fontSize: 14 }}>按方向键响应箭头。如听到“哔”则尽量抑制不按（Stop 信号延迟自适应）。</div>
+        <div className="title">Stop-Signal</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('sst.rules')}</div>
         <div className="row">
-          <Tile title="进度" value={`${Math.min(idx, trials)}/${trials}`} />
-          <Tile title="SSD" value={`${ssd}ms`} />
+          <Tile title={t('ui.progress')} value={`${Math.min(idx, trials)}/${trials}`} />
+          <Tile title={t('ui.ssd')} value={`${ssd}ms`} />
         </div>
         <div ref={panelRef} className="card panel" tabIndex={0} style={{ height: 220, display: 'grid', placeItems: 'center', outline: 'none' }}>
           <div style={{ fontWeight: 900, fontSize: 64 }}>
@@ -109,7 +111,7 @@ export default function StopSignal({ autoMode = false, onFinish }: { autoMode?: 
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
-          {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>开始</button> : <button className="btn secondary" onClick={() => setRunning(false)}>暂停</button>}
+          {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>{t('ui.start')}</button> : <button className="btn secondary" onClick={() => setRunning(false)}>{t('ui.pause')}</button>}
         </div>
       </section>
     </div>

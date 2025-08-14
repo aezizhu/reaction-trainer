@@ -10,6 +10,7 @@ import StopSignal from '@/games/StopSignal';
 import ChoiceRT from '@/games/ChoiceRT';
 import { useHistory } from '@/contexts/HistoryContext';
 import MiniBars from '@/components/MiniBars';
+import { useI18n } from '@/contexts/I18nContext';
 
 type Step = { key: string; title: string; render: (onFinish: () => void) => JSX.Element };
 
@@ -17,16 +18,17 @@ export default function UnifiedTraining() {
   const [stepIndex, setStepIndex] = useState(0);
   const [runId, setRunId] = useState(0);
   const { records } = useHistory();
+  const { t } = useI18n();
   const steps: Step[] = useMemo(() => [
-    { key: 'reaction', title: '反应时热身', render: (done) => <ReactionTime autoMode targetAttempts={8} onFinish={done} /> },
-    { key: 'aim', title: '点靶手眼', render: (done) => <AimTrainer autoMode onFinish={done} /> },
-    { key: 'sequence', title: '工作记忆', render: (done) => <SequenceMemory autoMode onFinish={done} /> },
-    { key: 'crt', title: '多选反应', render: (done) => <ChoiceRT autoMode trials={24} onFinish={done} /> },
-    { key: 'stroop', title: 'Stroop 抑制', render: (done) => <Stroop autoMode onFinish={done} /> },
+    { key: 'reaction', title: `${t('game.reaction')} Warmup`, render: (done) => <ReactionTime autoMode targetAttempts={8} onFinish={done} /> },
+    { key: 'aim', title: `${t('game.aim')}`, render: (done) => <AimTrainer autoMode onFinish={done} /> },
+    { key: 'sequence', title: `${t('game.sequence')}`, render: (done) => <SequenceMemory autoMode onFinish={done} /> },
+    { key: 'crt', title: `${t('game.crt')}`, render: (done) => <ChoiceRT autoMode trials={24} onFinish={done} /> },
+    { key: 'stroop', title: 'Stroop', render: (done) => <Stroop autoMode onFinish={done} /> },
     { key: 'gng', title: 'Go/No-Go', render: (done) => <GoNoGo autoMode onFinish={done} /> },
-    { key: 'posner', title: '注意定向', render: (done) => <PosnerCue autoMode onFinish={done} /> },
+    { key: 'posner', title: 'Posner Cue', render: (done) => <PosnerCue autoMode onFinish={done} /> },
     { key: 'sst', title: 'Stop-Signal', render: (done) => <StopSignal autoMode onFinish={done} /> },
-    { key: 'taps', title: '点击速度', render: (done) => <TapSpeed autoMode attempts={3} onFinish={done} /> },
+    { key: 'taps', title: `${t('game.taps')}`, render: (done) => <TapSpeed autoMode attempts={3} onFinish={done} /> },
   ], []);
 
   const next = useCallback(() => setStepIndex(i => Math.min(i + 1, steps.length - 1)), [steps.length]);
@@ -34,22 +36,22 @@ export default function UnifiedTraining() {
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">科学训练（自动流程）</div>
-        <div className="muted" style={{ fontSize: 14 }}>系统将依次为你安排不同训练，自动开始和保存结果，你只需专注于操作。</div>
+        <div className="title">Automated Training</div>
+        <div className="muted" style={{ fontSize: 14 }}>The system runs a curated sequence. It auto-starts and saves each game; focus on performing.</div>
         {stepIndex < steps.length ? (
           <>
             <div className="card panel" style={{ display: 'grid', gap: 8 }}>
-              <div className="muted" style={{ fontSize: 12 }}>步骤 {stepIndex + 1} / {steps.length}：{steps[stepIndex].title}</div>
+              <div className="muted" style={{ fontSize: 12 }}>{t('ui.step')} {stepIndex + 1} {t('ui.of')} {steps.length}: {steps[stepIndex].title}</div>
               <div key={`${runId}-${steps[stepIndex].key}`}>
                 {steps[stepIndex].render(next)}
               </div>
             </div>
             <div style={{ display: 'flex', gap: 8, justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', gap: 8 }}>
-                <button className="btn secondary" onClick={() => setStepIndex(i => Math.max(0, i - 1))}>上一步</button>
-                <button className="btn secondary" onClick={() => { setStepIndex(0); setRunId(id => id + 1); }}>重启本轮</button>
+                <button className="btn secondary" onClick={() => setStepIndex(i => Math.max(0, i - 1))}>{t('ui.previous')}</button>
+                <button className="btn secondary" onClick={() => { setStepIndex(0); setRunId(id => id + 1); }}>{t('ui.restartRound')}</button>
               </div>
-              <button className="btn" onClick={() => setStepIndex(i => Math.min(steps.length, i + 1))}>跳过/下一步</button>
+              <button className="btn" onClick={() => setStepIndex(i => Math.min(steps.length, i + 1))}>{t('ui.skipNext')}</button>
             </div>
           </>
         ) : (
@@ -72,7 +74,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
 
   return (
     <div className="card panel" style={{ display: 'grid', gap: 12 }}>
-      <div style={{ fontWeight: 800 }}>本轮训练总结</div>
+      <div style={{ fontWeight: 800 }}>{useI18n().t('ui.summary')}</div>
       <div className="grid">
         {lastByGame.reaction && (
           <div className="card panel">

@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
 import { loadPrefs } from '@/utils/prefs';
+import { useI18n } from '@/contexts/I18nContext';
 
 type Side = 'L' | 'R';
 
 export default function PosnerCue({ autoMode = false, onFinish }: { autoMode?: boolean; onFinish?: () => void } = {}) {
   const { addRecord } = useHistory();
+  const { t } = useI18n();
   const [running, setRunning] = useState(false);
   const [idx, setIdx] = useState(0);
   const [cue, setCue] = useState<Side | null>(null);
@@ -76,10 +78,10 @@ export default function PosnerCue({ autoMode = false, onFinish }: { autoMode?: b
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">Posner Cue 注意定向</div>
-        <div className="muted" style={{ fontSize: 14 }}>依据左/右箭头线索定向。目标出现后按对应方向键（←/→）。</div>
+        <div className="title">Posner Cue</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('posner.rules')}</div>
         <div className="row">
-          <Tile title="进度" value={`${Math.min(idx, trials)}/${trials}`} />
+          <Tile title={t('ui.progress')} value={`${Math.min(idx, trials)}/${trials}`} />
         </div>
         <div
           ref={panelRef}

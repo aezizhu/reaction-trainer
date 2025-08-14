@@ -33,7 +33,7 @@ export function importJson(e: React.ChangeEvent<HTMLInputElement>, done: () => v
       localStorage.setItem('reaction_trainer_history_v1', JSON.stringify(arr));
       done();
     } catch (err) {
-      alert('导入失败：JSON格式不正确');
+      alert('Import failed: invalid JSON format');
     }
   };
   reader.readAsText(file);

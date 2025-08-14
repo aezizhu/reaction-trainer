@@ -2,8 +2,10 @@ import { useMemo } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
 import { exportJson, exportCsv, importJson } from './_noop';
 import Sparkline from '@/components/Sparkline';
+import { useI18n } from '@/contexts/I18nContext';
 
 export default function Insights() {
+  const { t } = useI18n();
   const { records, clearAll, getStats } = useHistory();
   const stats = useMemo(() => getStats(), [records]);
   const todayCount = useMemo(() => records.filter(r => new Date(r.dateIso).toDateString() === new Date().toDateString()).length, [records]);
@@ -12,11 +14,11 @@ export default function Insights() {
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 10 }}>
-        <div className="title">建议与概览</div>
+        <div className="title">{t('insights.title')}</div>
         <div className="row">
-          <Tile title="近7天训练次数" value={stats.last7d.length.toString()} />
-          <Tile title="今日完成" value={String(todayCount)} />
-          <Tile title="连续天数" value={String(streakDays)} />
+          <Tile title={t('insights.sessions7d')} value={stats.last7d.length.toString()} />
+          <Tile title={t('insights.doneToday')} value={String(todayCount)} />
+          <Tile title={t('insights.streakDays')} value={String(streakDays)} />
           <Tile title="Reaction" value={String(stats.totals.reaction)} />
           <Tile title="Aim" value={String(stats.totals.aim)} />
           <Tile title="Sequence" value={String(stats.totals.sequence)} />
@@ -36,18 +38,18 @@ export default function Insights() {
           ))}
         </ul>
         <div style={{ display: 'flex', gap: 8, marginTop: 6, flexWrap: 'wrap' }}>
-          <button className="btn" onClick={() => exportJson(records)}>导出JSON</button>
-          <button className="btn" onClick={() => exportCsv(records)}>导出CSV</button>
+          <button className="btn" onClick={() => exportJson(records)}>{t('insights.exportJson')}</button>
+          <button className="btn" onClick={() => exportCsv(records)}>{t('insights.exportCsv')}</button>
           <label className="btn secondary" style={{ cursor: 'pointer' }}>
-            导入JSON
+            {t('insights.importJson')}
             <input type="file" accept="application/json" style={{ display: 'none' }} onChange={(e) => importJson(e, window.location.reload)} />
           </label>
-          <button className="btn secondary" onClick={clearAll}>清空历史</button>
+          <button className="btn secondary" onClick={clearAll}>{t('insights.clear')}</button>
         </div>
       </section>
 
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div style={{ fontWeight: 800 }}>历史记录</div>
+        <div style={{ fontWeight: 800 }}>{t('insights.history')}</div>
         <div className="grid">
           {records.map(r => (
             <div key={r.id} className="card panel" style={{ display: 'grid', gap: 6 }}>

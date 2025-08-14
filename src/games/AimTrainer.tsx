@@ -2,11 +2,13 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
 import { loadPrefs } from '@/utils/prefs';
 import { playClick, vibrate } from '@/utils/sound';
+import { useI18n } from '@/contexts/I18nContext';
 
 interface Target { id: string; x: number; y: number; r: number; born: number; }
 
 export default function AimTrainer({ autoMode = false, onFinish }: { autoMode?: boolean; onFinish?: () => void } = {}) {
   const { addRecord } = useHistory();
+  const { t } = useI18n();
   const [running, setRunning] = useState(false);
   const [targets, setTargets] = useState<Target[]>([]);
   const [hits, setHits] = useState(0);
@@ -123,24 +125,24 @@ export default function AimTrainer({ autoMode = false, onFinish }: { autoMode?: 
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">点靶 Aim Trainer</div>
-        <div className="muted" style={{ fontSize: 14 }}>30秒限时，点击尽可能多的目标。建议先追求准确率再提速。</div>
+        <div className="title">{t('game.aim')}</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('aim.rules')}</div>
         <div className="row">
-          <Tile title="命中" value={String(hits)} />
-          <Tile title="点击" value={String(attempts)} />
-          <Tile title="准确率" value={`${Math.round(accuracy)}%`} />
-          <Tile title="剩余时间" value={`${timeLeft}s`} />
-          <Tile title="生成目标" value={String(spawns)} />
-          <Tile title="未击中" value={String(missed)} />
+          <Tile title={t('ui.hits')} value={String(hits)} />
+          <Tile title={t('ui.clicks')} value={String(attempts)} />
+          <Tile title={t('ui.accuracy')} value={`${Math.round(accuracy)}%`} />
+          <Tile title={t('ui.timeLeft')} value={`${timeLeft}s`} />
+          <Tile title={t('ui.spawns')} value={String(spawns)} />
+          <Tile title={t('ui.missed')} value={String(missed)} />
         </div>
         {!autoMode && (
           <div style={{ display: 'flex', gap: 8 }}>
             {!running ? (
-              <button className="btn" onClick={start}>开始</button>
+              <button className="btn" onClick={start}>{t('ui.start')}</button>
             ) : (
-              <button className="btn secondary" onClick={stop}>暂停</button>
+              <button className="btn secondary" onClick={stop}>{t('ui.pause')}</button>
             )}
-            <button className="btn" onClick={save} disabled={attempts === 0}>保存到历史</button>
+            <button className="btn" onClick={save} disabled={attempts === 0}>{t('ui.save')}</button>
           </div>
         )}
 

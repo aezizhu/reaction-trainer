@@ -2,11 +2,13 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
 import { loadPrefs } from '@/utils/prefs';
 import { playClick } from '@/utils/sound';
+import { useI18n } from '@/contexts/I18nContext';
 
 type Cell = 0 | 1 | 2 | 3;
 
 export default function SequenceMemory({ autoMode = false, onFinish }: { autoMode?: boolean; onFinish?: () => void } = {}) {
   const { addRecord } = useHistory();
+  const { t } = useI18n();
   const [level, setLevel] = useState(1);
   const [seq, setSeq] = useState<Cell[]>([]);
   const [showing, setShowing] = useState(false);
@@ -90,15 +92,15 @@ export default function SequenceMemory({ autoMode = false, onFinish }: { autoMod
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">序列记忆 Sequence Memory</div>
-        <div className="muted" style={{ fontSize: 14 }}>观看亮灯顺序，然后按相同顺序点击。层级逐步提高。</div>
+        <div className="title">{t('game.sequence')}</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('seq.rules')}</div>
         <div style={{ display: 'flex', gap: 12 }}>
           <div className="card panel col">
-            <div className="muted" style={{ fontSize: 12 }}>当前层级</div>
+            <div className="muted" style={{ fontSize: 12 }}>{t('seq.currentLevel')}</div>
             <div className="metric">{level}</div>
           </div>
           <div className="card panel col">
-            <div className="muted" style={{ fontSize: 12 }}>最长</div>
+            <div className="muted" style={{ fontSize: 12 }}>{t('seq.longest')}</div>
             <div className="metric">{longest}</div>
           </div>
         </div>

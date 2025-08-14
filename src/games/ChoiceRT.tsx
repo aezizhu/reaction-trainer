@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
+import { useI18n } from '@/contexts/I18nContext';
 
 const KEYS = ['KeyD','KeyF','KeyJ','KeyK'];
 
 export default function ChoiceRT({ autoMode = false, trials = 40, onFinish }: { autoMode?: boolean; trials?: number; onFinish?: () => void } = {}) {
   const { addRecord } = useHistory();
+  const { t } = useI18n();
   const [running, setRunning] = useState(false);
   const [idx, setIdx] = useState(0);
   const [cue, setCue] = useState<number | null>(null);
@@ -53,8 +55,8 @@ export default function ChoiceRT({ autoMode = false, trials = 40, onFinish }: { 
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">Choice Reaction 多选反应</div>
-        <div className="muted" style={{ fontSize: 14 }}>按 D/F/J/K 对应图标位置，尽量快速且准确。</div>
+        <div className="title">{t('game.crt')}</div>
+        <div className="muted" style={{ fontSize: 14 }}>Respond using D/F/J/K matching the position. Aim for both speed and accuracy.</div>
         <div className="card panel" style={{ height: 220, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, placeItems: 'center' }}>
           {[0,1,2,3].map(i => (
             <div key={i} className="card" style={{ width: 100, height: 100, display: 'grid', placeItems: 'center', background: cue === i ? '#7c5cff' : undefined }}>

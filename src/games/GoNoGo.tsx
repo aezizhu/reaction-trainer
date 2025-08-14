@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useHistory } from '@/contexts/HistoryContext';
 import { loadPrefs } from '@/utils/prefs';
 import { playClick } from '@/utils/sound';
+import { useI18n } from '@/contexts/I18nContext';
 
 type Stim = 'GO' | 'NOGO';
 
 export default function GoNoGo({ autoMode = false, onFinish }: { autoMode?: boolean; onFinish?: () => void } = {}) {
   const { addRecord } = useHistory();
+  const { t } = useI18n();
   const [running, setRunning] = useState(false);
   const [stim, setStim] = useState<Stim | null>(null);
   const [idx, setIdx] = useState(0);
@@ -67,9 +69,9 @@ export default function GoNoGo({ autoMode = false, onFinish }: { autoMode?: bool
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
         <div className="title">Go/No-Go</div>
-        <div className="muted" style={{ fontSize: 14 }}>看到“GO”请立即按空格，看到“NO-GO”请抑制反应不按。共{trials}次。</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('gng.rules', { n: trials })}</div>
         <div className="row">
-          <div className="card panel col"><div className="muted" style={{ fontSize: 12 }}>当前试次</div><div className="metric">{Math.min(idx + 1, trials)}/{trials}</div></div>
+          <div className="card panel col"><div className="muted" style={{ fontSize: 12 }}>{t('ui.currentTrial')}</div><div className="metric">{Math.min(idx + 1, trials)}/{trials}</div></div>
         </div>
         <div
           ref={panelRef}
@@ -78,15 +80,13 @@ export default function GoNoGo({ autoMode = false, onFinish }: { autoMode?: bool
           onKeyDown={(e) => { if (e.code === 'Space') press(); }}
           style={{ height: 200, display: 'grid', placeItems: 'center', outline: 'none' }}
         >
-          <div style={{ fontWeight: 900, fontSize: 48 }}>
-            {stim ?? '按空格开始'}
-          </div>
+          <div style={{ fontWeight: 900, fontSize: 48 }}>{stim ?? 'Press Space to start'}</div>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           {!running ? (
-            <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>开始</button>
+            <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>{t('ui.start')}</button>
           ) : (
-            <button className="btn secondary" onClick={() => setRunning(false)}>暂停</button>
+            <button className="btn secondary" onClick={() => setRunning(false)}>{t('ui.pause')}</button>
           )}
         </div>
       </section>

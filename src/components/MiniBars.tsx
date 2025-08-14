@@ -1,4 +1,4 @@
-export default function MiniBars({ current, avg, width = 160, height = 40, labels = ['本次', '7日均'], colors = ['#7c5cff', '#2b2f55'] }: { current: number; avg: number; width?: number; height?: number; labels?: [string, string] | string[]; colors?: [string, string] | string[] }) {
+export default function MiniBars({ current, avg, width = 160, height = 40, labels = ['Current', '7d avg'], colors = ['#7c5cff', '#2b2f55'] }: { current: number; avg: number; width?: number; height?: number; labels?: [string, string] | string[]; colors?: [string, string] | string[] }) {
   const max = Math.max(current, avg, 1);
   const cH = Math.round((current / max) * (height - 16));
   const aH = Math.round((avg / max) * (height - 16));
