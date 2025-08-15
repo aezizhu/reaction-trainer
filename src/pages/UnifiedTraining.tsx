@@ -192,7 +192,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         <div className="muted" style={{ fontSize: 12 }}>Recommendations</div>
         <ul className="muted" style={{ fontSize: 14, display: 'grid', gap: 6 }}>
           <li>Practice daily; prioritize sleep and rest.</li>
-          <li>If RT > 7d average, shorten cue interval and reduce distractions next round.</li>
+          <li>If RT &gt; 7d average, shorten cue interval and reduce distractions next round.</li>
           <li>If aim accuracy below average, increase target size then ramp difficulty.</li>
           <li>For tap speed, try short (3s) sprints and focus on rhythm stability.</li>
         </ul>
