@@ -58,7 +58,7 @@ function Topbar() {
           <Link className="badge" to="/settings">{t('nav.settings')}</Link>
         </nav>
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
-          <select className="btn secondary" value={lang} onChange={(e) => setLang(e.target.value as any)}>
+          <select aria-label="language" className="btn secondary" value={lang} onChange={(e) => setLang(e.target.value as any)}>
             <option value="en">English</option>
             <option value="zh">中文</option>
             <option value="es">Español</option>

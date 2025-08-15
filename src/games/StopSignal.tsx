@@ -40,13 +40,13 @@ export default function StopSignal({ autoMode = false, onFinish }: { autoMode?: 
     if (willStop) {
       beepTimer.current = window.setTimeout(() => { setIsStop(true); if (prefs.soundEnabled) playClick(0.25); }, ssd) as any;
     }
-    // End-of-trial timer: if无响应，则记录（Go错/Stop成功），并推进试次
+    // End-of-trial timer: if no response, record (Go miss / Stop success) and advance
     endTimer.current = window.setTimeout(() => {
       if (!running) return;
       if (willStop) {
         // Successful stop (no response)
         setLog(prev => [...prev, { go: false, correct: true, stop: true }]);
-        setSsd(prev => prev + step); // 成功 → SSD 增大
+        setSsd(prev => prev + step);
       } else {
         // Missed Go
         setLog(prev => [...prev, { go: true, correct: false }]);
@@ -89,7 +89,7 @@ export default function StopSignal({ autoMode = false, onFinish }: { autoMode?: 
     const goAcc = go.length ? (go.filter(l => l.correct).length / go.length) * 100 : 0;
     const stopTrials = log.filter(l => l.stop);
     const stopSuccess = stopTrials.length ? (stopTrials.filter(l => l.correct).length / stopTrials.length) * 100 : 0;
-    // Estimate SSRT ≈ mean(correct Go RT) - 当前SSD
+    // Estimate SSRT ≈ mean(correct Go RT) - current SSD
     const meanGoRt = avg(go.filter(l => l.correct && typeof l.rt === 'number').map(l => l.rt as number));
     const ssrt = Math.max(0, meanGoRt - ssd);
     addRecord({ id: crypto.randomUUID(), game: 'sst', dateIso: new Date().toISOString(), sst: { avgSsdMs: ssd, ssrtMs: ssrt, stopSuccessPct: stopSuccess, goAcc } });

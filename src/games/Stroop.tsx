@@ -3,9 +3,9 @@ import { useHistory } from '@/contexts/HistoryContext';
 import { loadPrefs } from '@/utils/prefs';
 import { useI18n } from '@/contexts/I18nContext';
 
-type ColorKey = '红' | '绿' | '蓝' | '黄';
-const COLORS: Record<ColorKey, string> = { '红': '#ff5c7a', '绿': '#3ad29f', '蓝': '#5aa9ff', '黄': '#ffcc66' };
-const KEYS: Record<string, ColorKey> = { d: '红', f: '绿', j: '蓝', k: '黄' };
+type ColorKey = 'RED' | 'GREEN' | 'BLUE' | 'YELLOW';
+const COLORS: Record<ColorKey, string> = { RED: '#ff5c7a', GREEN: '#3ad29f', BLUE: '#5aa9ff', YELLOW: '#ffcc66' };
+const KEYS: Record<string, ColorKey> = { d: 'RED', f: 'GREEN', j: 'BLUE', k: 'YELLOW' };
 
 interface Trial { word: ColorKey; color: ColorKey; congruent: boolean }
 
@@ -24,9 +24,9 @@ export default function Stroop({ autoMode = false, onFinish }: { autoMode?: bool
 
   const nextTrial = () => {
     if (idx >= total) return finish();
-    const word = pick<ColorKey>(['红', '绿', '蓝', '黄']);
+    const word = pick<ColorKey>(['RED', 'GREEN', 'BLUE', 'YELLOW']);
     const isCong = Math.random() > incongruentRatio;
-    const pool = (['红', '绿', '蓝', '黄'] as ColorKey[]).filter(c => c !== word);
+    const pool = (['RED', 'GREEN', 'BLUE', 'YELLOW'] as ColorKey[]).filter(c => c !== word);
     const color = isCong ? word : pick<ColorKey>(pool);
     setTrial({ word, color, congruent: isCong });
     startAt.current = performance.now();
@@ -98,7 +98,7 @@ export default function Stroop({ autoMode = false, onFinish }: { autoMode?: bool
           )}
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
-          {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>开始</button> : <button className="btn secondary" onClick={() => setRunning(false)}>暂停</button>}
+          {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>Start</button> : <button className="btn secondary" onClick={() => setRunning(false)}>Pause</button>}
           {trial && (
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {(Object.keys(COLORS) as ColorKey[]).map((c) => (

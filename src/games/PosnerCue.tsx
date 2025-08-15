@@ -45,7 +45,7 @@ export default function PosnerCue({ autoMode = false, onFinish }: { autoMode?: b
   };
 
   useEffect(() => { if (running) { panelRef.current?.focus(); beginTrial(); } /* eslint-disable-next-line */}, [running]);
-  // 保持面板在运行过程中的焦点，避免方向键事件丢失
+  // Keep focus on panel during run to avoid losing arrow key events
   useEffect(() => { if (running) { panelRef.current?.focus(); } }, [idx, running]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -97,13 +97,13 @@ export default function PosnerCue({ autoMode = false, onFinish }: { autoMode?: b
           <div />
           <div style={{ fontSize: 42, opacity: cue ? 1 : 0.2 }}>{ cue === 'L' ? '←' : cue === 'R' ? '→' : '·' }</div>
           <div />
-          <div style={{ gridColumn: '1 / span 1', fontSize: 36, opacity: target === 'L' ? 1 : 0.2 }}>●</div>
+          <div style={{ gridColumn: '1 / span 1', fontSize: 36, opacity: target === 'L' ? 1 : 0.2 }}>•</div>
           <div />
-          <div style={{ gridColumn: '3 / span 1', fontSize: 36, opacity: target === 'R' ? 1 : 0.2 }}>●</div>
+          <div style={{ gridColumn: '3 / span 1', fontSize: 36, opacity: target === 'R' ? 1 : 0.2 }}>•</div>
         </div>
         {!autoMode && (
           <div style={{ display: 'flex', gap: 8 }}>
-            {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>开始</button> : <button className="btn secondary" onClick={() => setRunning(false)}>暂停</button>}
+            {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>Start</button> : <button className="btn secondary" onClick={() => setRunning(false)}>Pause</button>}
           </div>
         )}
       </section>

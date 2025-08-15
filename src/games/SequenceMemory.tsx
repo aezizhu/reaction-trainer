@@ -20,10 +20,7 @@ export default function SequenceMemory({ autoMode = false, onFinish }: { autoMod
 
   useEffect(() => {
     startLevel(1);
-    return () => {
-      // 清理残留定时器，防止组件卸载后仍触发回调
-      clearTimers();
-    };
+    return () => { clearTimers(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

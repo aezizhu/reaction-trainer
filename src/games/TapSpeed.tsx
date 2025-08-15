@@ -70,7 +70,7 @@ export default function TapSpeed({ autoMode = false, attempts = 3, onFinish }: {
           {autoMode && best && <Tile title={t('ui.best')} value={`${best.taps}`} />}
         </div>
         <div className="card panel" onClick={tap} style={{ height: 220, display: 'grid', placeItems: 'center', userSelect: 'none', cursor: 'pointer' }}>
-          <div className="metric">点击这里或按空格</div>
+          <div className="metric">{t('aim.clickHere')}</div>
         </div>
         {!autoMode && (
           <div style={{ display: 'flex', gap: 8 }}>

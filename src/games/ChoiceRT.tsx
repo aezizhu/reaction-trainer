@@ -66,7 +66,7 @@ export default function ChoiceRT({ autoMode = false, trials = 40, onFinish }: { 
         </div>
         {!autoMode && (
           <div style={{ display: 'flex', gap: 8 }}>
-            {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>开始</button> : <button className="btn secondary" onClick={() => setRunning(false)}>暂停</button>}
+            {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>Start</button> : <button className="btn secondary" onClick={() => setRunning(false)}>Pause</button>}
           </div>
         )}
       </section>
