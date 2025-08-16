@@ -30,12 +30,16 @@ export default function Insights() {
           <Tile title={t('game.crt')} value={String(stats.totals.crt)} />
         </div>
         <ul style={{ display: 'grid', gap: 8 }}>
-          {stats.recommendations.map((r, i) => (
-            <li key={i} className="card panel" style={{ padding: 12, display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'space-between' }}>
-              <span>{r}</span>
-              <Sparkline data={records.filter(x => x.game === 'reaction' && x.reaction).slice(0, 12).map(x => x!.reaction!.averageMs)} />
-            </li>
-          ))}
+          {stats.recommendations.map((r, i) => {
+            const [key, ...vars] = r.split(':');
+            const text = t(key, vars.length > 0 ? { rt: vars[0] } : {});
+            return (
+              <li key={i} className="card panel" style={{ padding: 12, display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'space-between' }}>
+                <span>{text}</span>
+                <Sparkline data={records.filter(x => x.game === 'reaction' && x.reaction).slice(0, 12).map(x => x!.reaction!.averageMs)} />
+              </li>
+            );
+          })}
         </ul>
         <div style={{ display: 'flex', gap: 8, marginTop: 6, flexWrap: 'wrap' }}>
           <button className="btn" onClick={() => exportJson(records)}>{t('insights.exportJson')}</button>
@@ -59,47 +63,47 @@ export default function Insights() {
               </div>
               {r.reaction && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Avg RT: {Math.round(r.reaction.averageMs)} ms, Best: {Math.round(r.reaction.bestMs)} ms
+                  {t('history.avgRt')}: {Math.round(r.reaction.averageMs)} ms, {t('history.best')}: {Math.round(r.reaction.bestMs)} ms
                 </div>
               )}
               {r.aim && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Hits: {r.aim.hits}, Accuracy: {Math.round(r.aim.accuracy)}% ({r.aim.timeSec}s)
+                  {t('history.hits')}: {r.aim.hits}, {t('history.accuracy')}: {Math.round(r.aim.accuracy)}% ({r.aim.timeSec}{t('history.seconds')})
                 </div>
               )}
               {r.sequence && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Level: {r.sequence.level}, Longest: {r.sequence.longest}
+                  {t('history.level')}: {r.sequence.level}, {t('history.longest')}: {r.sequence.longest}
                 </div>
               )}
               {r.gng && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Go Acc: {Math.round(r.gng.goAcc)}%, No-Go Acc: {Math.round(r.gng.nogoAcc)}%, Avg RT: {Math.round(r.gng.avgRtMs)} ms
+                  {t('history.goAcc')}: {Math.round(r.gng.goAcc)}%, {t('history.nogoAcc')}: {Math.round(r.gng.nogoAcc)}%, {t('history.avgRt')}: {Math.round(r.gng.avgRtMs)} ms
                 </div>
               )}
               {r.stroop && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Cong: {Math.round(r.stroop.congruentAvgMs)} ms, Incong: {Math.round(r.stroop.incongruentAvgMs)} ms, Cost: {Math.round(r.stroop.costMs)} ms, Acc: {Math.round(r.stroop.accuracy)}%
+                  {t('history.cong')}: {Math.round(r.stroop.congruentAvgMs)} ms, {t('history.incong')}: {Math.round(r.stroop.incongruentAvgMs)} ms, {t('history.cost')}: {Math.round(r.stroop.costMs)} ms, {t('history.accuracy')}: {Math.round(r.stroop.accuracy)}%
                 </div>
               )}
               {r.taps && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Taps: {r.taps.taps} ({r.taps.seconds}s), Avg Interval: {Math.round(r.taps.avgIntervalMs)} ms
+                  {t('history.taps')}: {r.taps.taps} ({r.taps.seconds}{t('history.seconds')}), {t('history.avgInterval')}: {Math.round(r.taps.avgIntervalMs)} ms
                 </div>
               )}
               {r.posner && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Valid: {Math.round(r.posner.validAvgMs)} ms, Invalid: {Math.round(r.posner.invalidAvgMs)} ms, Cost: {Math.round(r.posner.costMs)} ms, Acc: {Math.round(r.posner.accuracy)}%
+                  {t('history.valid')}: {Math.round(r.posner.validAvgMs)} ms, {t('history.invalid')}: {Math.round(r.posner.invalidAvgMs)} ms, {t('history.cost')}: {Math.round(r.posner.costMs)} ms, {t('history.accuracy')}: {Math.round(r.posner.accuracy)}%
                 </div>
               )}
               {r.sst && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  SSD: {Math.round(r.sst.avgSsdMs)} ms, SSRT: {Math.round(r.sst.ssrtMs)} ms, Stop Success: {Math.round(r.sst.stopSuccessPct)}%, Go Acc: {Math.round(r.sst.goAcc)}%
+                  {t('history.ssd')}: {Math.round(r.sst.avgSsdMs)} ms, {t('history.ssrt')}: {Math.round(r.sst.ssrtMs)} ms, {t('history.stopSuccess')}: {Math.round(r.sst.stopSuccessPct)}%, {t('history.goAcc')}: {Math.round(r.sst.goAcc)}%
                 </div>
               )}
               {r.crt && (
                 <div className="muted" style={{ fontSize: 14 }}>
-                  Choices: {r.crt.choices}, Avg RT: {Math.round(r.crt.avgRtMs)} ms, Acc: {Math.round(r.crt.accuracy)}%
+                  {t('history.choices')}: {r.crt.choices}, {t('history.avgRt')}: {Math.round(r.crt.avgRtMs)} ms, {t('history.accuracy')}: {Math.round(r.crt.accuracy)}%
                 </div>
               )}
             </div>

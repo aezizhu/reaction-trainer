@@ -114,6 +114,14 @@ Fix Log (2025-01):
 - Fixed Home.tsx, Insights.tsx, and Settings.tsx missing translations for all UI elements, game titles, and settings labels.
 - Added comprehensive translations for settings page including all game configuration options.
 - Added lifestyle tips translations for insights page.
+- Fixed all hardcoded English text in history records display (Avg RT, Hits, Accuracy, Level, etc.).
+- Added comprehensive history metrics translations for all supported languages.
+- Fixed missing translation for "Start training!" prompt in insights page.
+- Removed duplicate translation key that was causing build errors.
+- Fixed all hardcoded English text in personalized recommendations (HistoryContext.tsx).
+- Added comprehensive translations for all recommendation types (reaction time, aim, sequence, etc.).
+- Updated Insights.tsx to properly display translated recommendations with variable substitution.
+- Fixed duplicate display of training prompt by removing manual conditional display, keeping only the one in recommendations list.
 
 ### 5. Implementation Notes by Game
 - ReactionTime.tsx: phases `idle → wait → go → result`; early click in WAIT counts as 1000ms; saves attempts/avg/best; prefs: min/max delay; sound/vibration supported.
