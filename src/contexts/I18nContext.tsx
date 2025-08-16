@@ -112,7 +112,33 @@ const dict: Dict = {
   'training.rec1': { en: 'Practice daily; prioritize sleep and rest.', zh: '每日练习；注意保证睡眠和休息。', es: 'Practica diariamente; prioriza el sueño y el descanso.', ar: 'تدرب يومياً؛ أعط الأولوية للنوم والراحة.', ru: 'Тренируйтесь ежедневно; уделяйте внимание сну и отдыху.' },
   'training.rec2': { en: 'If RT > 7d average, shorten cue interval and reduce distractions next round.', zh: '如果反应时间高于7日均值，下轮缩短提示间隔并减少干扰。', es: 'Si el TR > promedio 7d, acorta el intervalo de señal y reduce las distracciones en la siguiente ronda.', ar: 'إذا كان زمن الاستجابة > متوسط 7 أيام، قصر فترة الإشارة وقلل المشتتات في الجولة القادمة.', ru: 'Если ВР > среднего за 7 дней, сократите интервал сигнала и уменьшите отвлекающие факторы в следующем раунде.' },
   'training.rec3': { en: 'If aim accuracy below average, increase target size then ramp difficulty.', zh: '如果瞄准准确率低于平均值，增大目标尺寸后再逐步提高难度。', es: 'Si la precisión de puntería está por debajo del promedio, aumenta el tamaño del objetivo y luego incrementa la dificultad.', ar: 'إذا كانت دقة التصويب أقل من المتوسط، زد حجم الهدف ثم ارفع الصعوبة تدريجياً.', ru: 'Если точность прицеливания ниже средней, увеличьте размер цели, затем постепенно повышайте сложность.' },
-  'training.rec4': { en: 'For tap speed, try short (3s) sprints and focus on rhythm stability.', zh: '对于点击速度，尝试短时间（3秒）冲刺并注意保持节奏稳定。', es: 'Para la velocidad de toque, prueba sprints cortos (3s) y concéntrate en la estabilidad del ritmo.', ar: 'لسرعة النقر، جرب السباقات القصيرة (3 ثوان) وركز على ثبات الإيقاع.', ru: 'Для скорости нажатий попробуйте короткие (3с) спринты и сосредоточьтесь на стабильности ритма.' }
+  'training.rec4': { en: 'For tap speed, try short (3s) sprints and focus on rhythm stability.', zh: '对于点击速度，尝试短时间（3秒）冲刺并注意保持节奏稳定。', es: 'Para la velocidad de toque, prueba sprints cortos (3s) y concéntrate en la estabilidad del ritmo.', ar: 'لسرعة النقر، جرب السباقات القصيرة (3 ثوان) وركز على ثبات الإيقاع.', ru: 'Для скорости нажатий попробуйте короткие (3с) спринты и сосредоточьтесь на стабильности ритма.' },
+  
+  // Summary metrics
+  'summary.current_avg': { en: 'Current Average', zh: '本次平均', es: 'Promedio Actual', ar: 'المتوسط الحالي', ru: 'Текущее среднее' },
+  'summary.current_best': { en: 'Current Best', zh: '本次最佳', es: 'Mejor Actual', ar: 'أفضل حالي', ru: 'Текущий лучший' },
+  'summary.7d_avg': { en: '7-Day Average', zh: '7日均值', es: 'Promedio 7 días', ar: 'متوسط 7 أيام', ru: 'Среднее за 7 дней' },
+  'summary.hits': { en: 'Hits', zh: '命中', es: 'Aciertos', ar: 'إصابات', ru: 'Попадания' },
+  'summary.accuracy': { en: 'Accuracy', zh: '准确率', es: 'Precisión', ar: 'الدقة', ru: 'Точность' },
+  'summary.duration': { en: 'Duration', zh: '时长', es: 'Duración', ar: 'المدة', ru: 'Длительность' },
+  'summary.7d_avg_hits': { en: '7-Day Avg Hits', zh: '7日均命中', es: 'Promedio 7d aciertos', ar: 'متوسط الإصابات 7 أيام', ru: 'Ср. попаданий за 7д' },
+  'summary.best_taps': { en: 'Best Taps', zh: '本次最佳', es: 'Mejor Toques', ar: 'أفضل النقرات', ru: 'Лучшие нажатия' },
+  'summary.avg_interval': { en: 'Avg Interval', zh: '本次平均间隔', es: 'Intervalo Promedio', ar: 'متوسط الفاصل', ru: 'Средний интервал' },
+  'summary.7d_avg_taps': { en: '7-Day Avg Taps', zh: '7日均点击', es: 'Promedio 7d toques', ar: 'متوسط النقرات 7 أيام', ru: 'Ср. нажатий за 7д' },
+  'summary.avg_rt': { en: 'Average RT', zh: '平均RT', es: 'TR Promedio', ar: 'متوسط زمن الاستجابة', ru: 'Среднее ВР' },
+  'summary.choices': { en: 'Choices', zh: '选项数', es: 'Opciones', ar: 'الخيارات', ru: 'Выборы' },
+  'summary.congruent_avg': { en: 'Congruent Avg', zh: '一致平均', es: 'Promedio Congruente', ar: 'متوسط المتطابق', ru: 'Конгруэнтное среднее' },
+  'summary.incongruent_avg': { en: 'Incongruent Avg', zh: '不一致平均', es: 'Promedio Incongruente', ar: 'متوسط غير المتطابق', ru: 'Инконгруэнтное среднее' },
+  'summary.interference_cost': { en: 'Interference Cost', zh: '干扰成本', es: 'Costo de Interferencia', ar: 'تكلفة التداخل', ru: 'Стоимость интерференции' },
+  'summary.go_accuracy': { en: 'Go Accuracy', zh: 'Go 正确率', es: 'Precisión Go', ar: 'دقة Go', ru: 'Точность Go' },
+  'summary.nogo_accuracy': { en: 'No-Go Accuracy', zh: 'No-Go 正确率', es: 'Precisión No-Go', ar: 'دقة No-Go', ru: 'Точность No-Go' },
+  'summary.valid_cue_avg': { en: 'Valid Cue Avg', zh: '有效提示平均', es: 'Promedio Señal Válida', ar: 'متوسط الإشارة الصالحة', ru: 'Среднее валидной подсказки' },
+  'summary.invalid_cue_avg': { en: 'Invalid Cue Avg', zh: '无效提示平均', es: 'Promedio Señal Inválida', ar: 'متوسط الإشارة غير الصالحة', ru: 'Среднее невалидной подсказки' },
+  'summary.switch_cost': { en: 'Switch Cost', zh: '转换成本', es: 'Costo de Cambio', ar: 'تكلفة التبديل', ru: 'Стоимость переключения' },
+  'summary.avg_ssd': { en: 'Average SSD', zh: '平均SSD', es: 'SSD Promedio', ar: 'متوسط SSD', ru: 'Среднее SSD' },
+  'summary.ssrt_est': { en: 'SSRT (Est.)', zh: 'SSRT（估计）', es: 'SSRT (Est.)', ar: 'SSRT (تقديري)', ru: 'SSRT (оценка)' },
+  'summary.stop_success': { en: 'Stop Success', zh: 'Stop 成功率', es: 'Éxito Stop', ar: 'نجاح الإيقاف', ru: 'Успех остановки' },
+  'summary.go_acc': { en: 'Go Accuracy', zh: 'Go 准确率', es: 'Precisión Go', ar: 'دقة Go', ru: 'Точность Go' }
 };
 
 type I18nContextValue = {

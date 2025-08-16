@@ -63,7 +63,8 @@ export default function UnifiedTraining() {
 }
 
 function Summary({ records, onRestart }: { records: any[]; onRestart: () => void }) {
-  // 最近一次训练周期的最后N条，以各训练类型的最后记录为“本次”，对比近7天平均
+  const { t } = useI18n();
+  // 最近一次训练周期的最后N条，以各训练类型的最后记录为"本次"，对比近7天平均
   const lastByGame: Record<string, any> = {};
   for (const r of records) if (!(r.game in lastByGame)) lastByGame[r.game] = r;
   const last7d = records.filter(r => Date.now() - new Date(r.dateIso).getTime() <= 7*24*3600*1000);
@@ -74,7 +75,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
 
   return (
     <div className="card panel" style={{ display: 'grid', gap: 12 }}>
-      <div style={{ fontWeight: 800 }}>{useI18n().t('ui.summary')}</div>
+      <div style={{ fontWeight: 800 }}>{t('ui.summary')}</div>
       <div className="grid">
         {lastByGame.reaction && (
           <div className="card panel">
@@ -83,9 +84,9 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
-                <tr><td>本次平均</td><td className="num">{Math.round(lastByGame.reaction.reaction.averageMs)} ms</td></tr>
-                <tr><td>本次最佳</td><td className="num">{Math.round(lastByGame.reaction.reaction.bestMs)} ms</td></tr>
-                <tr><td>7日均值</td><td className="num">{Math.round(rtAvg7)} ms</td></tr>
+                <tr><td>{t('summary.current_avg')}</td><td className="num">{Math.round(lastByGame.reaction.reaction.averageMs)} ms</td></tr>
+                <tr><td>{t('summary.current_best')}</td><td className="num">{Math.round(lastByGame.reaction.reaction.bestMs)} ms</td></tr>
+                <tr><td>{t('summary.7d_avg')}</td><td className="num">{Math.round(rtAvg7)} ms</td></tr>
               </tbody>
             </table>
           </div>
