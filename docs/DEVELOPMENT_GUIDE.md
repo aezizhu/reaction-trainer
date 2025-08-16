@@ -122,6 +122,7 @@ Fix Log (2025-01):
 - Added comprehensive translations for all recommendation types (reaction time, aim, sequence, etc.).
 - Updated Insights.tsx to properly display translated recommendations with variable substitution.
 - Fixed duplicate display of training prompt by removing manual conditional display, keeping only the one in recommendations list.
+- Optimized CSV export format for better Excel analysis with detailed columns for all game metrics, proper date/time formatting, and UTF-8 BOM support.
 
 ### 5. Implementation Notes by Game
 - ReactionTime.tsx: phases `idle → wait → go → result`; early click in WAIT counts as 1000ms; saves attempts/avg/best; prefs: min/max delay; sound/vibration supported.
