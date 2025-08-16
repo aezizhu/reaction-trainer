@@ -100,6 +100,15 @@ Fix Log (2025-08):
 - Stop-Signal records successful stops on non-response, SSD staircase adjusts, SSRT ≈ mean(correct Go RT) − SSD.
 - Panels keep focus to avoid lost key events.
 
+Fix Log (2025-01):
+- Fixed all i18n issues in UnifiedTraining.tsx - all hardcoded text replaced with translation keys.
+- Added comprehensive translation keys for summary metrics and training page.
+- Ensured all game titles, metrics, and recommendations are properly localized.
+- Fixed Russian README file (README.ru.md) that was missing.
+- Updated license from MIT to Apache-2.0 across all documentation.
+- Fixed PosnerCue.tsx keyboard input issue - removed global event listener closure problem, improved focus management.
+- Added help text for Posner Cue game to guide users on how to interact with it.
+
 ### 5. Implementation Notes by Game
 - ReactionTime.tsx: phases `idle → wait → go → result`; early click in WAIT counts as 1000ms; saves attempts/avg/best; prefs: min/max delay; sound/vibration supported.
 - AimTrainer.tsx: 30s timer; spawn targets (≤6 concurrent); circle hit-test; metrics: hits/accuracy/time; prefs: radius/spawn/duration; hit feedback.

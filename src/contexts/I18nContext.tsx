@@ -81,6 +81,7 @@ const dict: Dict = {
   'stroop.readyNext': { en: 'Preparing next...', zh: '准备下一题...', es: 'Preparando siguiente...', ar: 'تحضير التالي...', ru: 'Подготовка следующего...' },
 
   'posner.rules': { en: 'Follow left/right arrow cue. When target appears, press the corresponding arrow key (←/→).', zh: '依据左/右箭头线索定向。目标出现后按对应方向键（←/→）。', es: 'Sigue la señal de flecha izquierda/derecha. Al aparecer el objetivo, presiona la flecha correspondiente (←/→).', ar: 'اتبع إشارة السهم لليسار/ليمين. عند ظهور الهدف اضغط السهم المقابل (←/→).', ru: 'Следуйте подсказке влево/вправо. Когда цель появляется, нажмите соответствующую стрелку (←/→).' },
+  'posner.help': { en: 'Click the panel below to start, then use arrow keys to respond', zh: '点击下方面板开始，然后使用方向键响应', es: 'Haz clic en el panel de abajo para empezar, luego usa las teclas de flecha para responder', ar: 'انقر على اللوحة أدناه للبدء، ثم استخدم مفاتيح الأسهم للاستجابة', ru: 'Нажмите на панель ниже, чтобы начать, затем используйте клавиши со стрелками для ответа' },
 
   'sst.rules': { en: 'Respond with arrow keys. If you hear a beep, try to withhold the response (adaptive SSD).', zh: '按方向键响应箭头。如听到“哔”则尽量抑制不按（Stop 信号延迟自适应）。', es: 'Responde con las flechas. Si escuchas un pitido, intenta inhibir la respuesta (SSD adaptativo).', ar: 'استجب بمفاتيح الأسهم. إذا سمعت صفيرًا فحاول منع الاستجابة (SSD تكيفي).', ru: 'Отвечайте стрелками. При сигнале (пип) постарайтесь удержаться (адаптивный SSD).' },
 

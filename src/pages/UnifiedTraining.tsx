@@ -98,10 +98,10 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
-                <tr><td>命中</td><td className="num">{lastByGame.aim.aim.hits}</td></tr>
-                <tr><td>准确率</td><td className="num">{Math.round(lastByGame.aim.aim.accuracy)}%</td></tr>
-                <tr><td>时长</td><td className="num">{lastByGame.aim.aim.timeSec}s</td></tr>
-                <tr><td>7日均命中</td><td className="num">{Math.round(aimAvg7)}</td></tr>
+                <tr><td>{t('summary.hits')}</td><td className="num">{lastByGame.aim.aim.hits}</td></tr>
+                <tr><td>{t('summary.accuracy')}</td><td className="num">{Math.round(lastByGame.aim.aim.accuracy)}%</td></tr>
+                <tr><td>{t('summary.duration')}</td><td className="num">{lastByGame.aim.aim.timeSec}s</td></tr>
+                <tr><td>{t('summary.7d_avg_hits')}</td><td className="num">{Math.round(aimAvg7)}</td></tr>
               </tbody>
             </table>
           </div>
@@ -113,77 +113,77 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
-                <tr><td>本次最佳</td><td className="num">{lastByGame.taps.taps.taps}</td></tr>
-                <tr><td>本次平均间隔</td><td className="num">{Math.round(lastByGame.taps.taps.avgIntervalMs)} ms</td></tr>
-                <tr><td>7日均点击</td><td className="num">{Math.round(tapsAvg7)}</td></tr>
+                <tr><td>{t('summary.best_taps')}</td><td className="num">{lastByGame.taps.taps.taps}</td></tr>
+                <tr><td>{t('summary.avg_interval')}</td><td className="num">{Math.round(lastByGame.taps.taps.avgIntervalMs)} ms</td></tr>
+                <tr><td>{t('summary.7d_avg_taps')}</td><td className="num">{Math.round(tapsAvg7)}</td></tr>
               </tbody>
             </table>
           </div>
         )}
         {lastByGame.crt && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Choice Reaction (CRT)</div>
+            <div className="muted" style={{ fontSize: 12 }}>{t('game.crt')}</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
-                <tr><td>平均RT</td><td className="num">{Math.round(lastByGame.crt.crt.avgRtMs)} ms</td></tr>
-                <tr><td>准确率</td><td className="num">{Math.round(lastByGame.crt.crt.accuracy)}%</td></tr>
-                <tr><td>选项数</td><td className="num">{lastByGame.crt.crt.choices}</td></tr>
+                <tr><td>{t('summary.avg_rt')}</td><td className="num">{Math.round(lastByGame.crt.crt.avgRtMs)} ms</td></tr>
+                <tr><td>{t('summary.accuracy')}</td><td className="num">{Math.round(lastByGame.crt.crt.accuracy)}%</td></tr>
+                <tr><td>{t('summary.choices')}</td><td className="num">{lastByGame.crt.crt.choices}</td></tr>
               </tbody>
             </table>
           </div>
         )}
         {lastByGame.stroop && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Stroop</div>
+            <div className="muted" style={{ fontSize: 12 }}>{t('game.stroop')}</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
-                <tr><td>一致平均</td><td className="num">{Math.round(lastByGame.stroop.stroop.congruentAvgMs)} ms</td></tr>
-                <tr><td>不一致平均</td><td className="num">{Math.round(lastByGame.stroop.stroop.incongruentAvgMs)} ms</td></tr>
-                <tr><td>干扰成本</td><td className="num">{Math.round(lastByGame.stroop.stroop.costMs)} ms</td></tr>
-                <tr><td>准确率</td><td className="num">{Math.round(lastByGame.stroop.stroop.accuracy)}%</td></tr>
+                <tr><td>{t('summary.congruent_avg')}</td><td className="num">{Math.round(lastByGame.stroop.stroop.congruentAvgMs)} ms</td></tr>
+                <tr><td>{t('summary.incongruent_avg')}</td><td className="num">{Math.round(lastByGame.stroop.stroop.incongruentAvgMs)} ms</td></tr>
+                <tr><td>{t('summary.interference_cost')}</td><td className="num">{Math.round(lastByGame.stroop.stroop.costMs)} ms</td></tr>
+                <tr><td>{t('summary.accuracy')}</td><td className="num">{Math.round(lastByGame.stroop.stroop.accuracy)}%</td></tr>
               </tbody>
             </table>
           </div>
         )}
         {lastByGame.gng && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Go/No-Go</div>
+            <div className="muted" style={{ fontSize: 12 }}>{t('game.gng')}</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
-                <tr><td>Go 正确率</td><td className="num">{Math.round(lastByGame.gng.gng.goAcc)}%</td></tr>
-                <tr><td>No-Go 正确率</td><td className="num">{Math.round(lastByGame.gng.gng.nogoAcc)}%</td></tr>
-                <tr><td>平均RT</td><td className="num">{Math.round(lastByGame.gng.gng.avgRtMs)} ms</td></tr>
+                <tr><td>{t('summary.go_accuracy')}</td><td className="num">{Math.round(lastByGame.gng.gng.goAcc)}%</td></tr>
+                <tr><td>{t('summary.nogo_accuracy')}</td><td className="num">{Math.round(lastByGame.gng.gng.nogoAcc)}%</td></tr>
+                <tr><td>{t('summary.avg_rt')}</td><td className="num">{Math.round(lastByGame.gng.gng.avgRtMs)} ms</td></tr>
               </tbody>
             </table>
           </div>
         )}
         {lastByGame.posner && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Posner Cue</div>
+            <div className="muted" style={{ fontSize: 12 }}>{t('game.posner')}</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
-                <tr><td>有效提示平均</td><td className="num">{Math.round(lastByGame.posner.posner.validAvgMs)} ms</td></tr>
-                <tr><td>无效提示平均</td><td className="num">{Math.round(lastByGame.posner.posner.invalidAvgMs)} ms</td></tr>
-                <tr><td>转换成本</td><td className="num">{Math.round(lastByGame.posner.posner.costMs)} ms</td></tr>
-                <tr><td>准确率</td><td className="num">{Math.round(lastByGame.posner.posner.accuracy)}%</td></tr>
+                <tr><td>{t('summary.valid_cue_avg')}</td><td className="num">{Math.round(lastByGame.posner.posner.validAvgMs)} ms</td></tr>
+                <tr><td>{t('summary.invalid_cue_avg')}</td><td className="num">{Math.round(lastByGame.posner.posner.invalidAvgMs)} ms</td></tr>
+                <tr><td>{t('summary.switch_cost')}</td><td className="num">{Math.round(lastByGame.posner.posner.costMs)} ms</td></tr>
+                <tr><td>{t('summary.accuracy')}</td><td className="num">{Math.round(lastByGame.posner.posner.accuracy)}%</td></tr>
               </tbody>
             </table>
           </div>
         )}
         {lastByGame.sst && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Stop-Signal</div>
+            <div className="muted" style={{ fontSize: 12 }}>{t('game.sst')}</div>
             <table className="table" style={{ marginTop: 10 }}>
               <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
-                <tr><td>平均SSD</td><td className="num">{Math.round(lastByGame.sst.sst.avgSsdMs)} ms</td></tr>
-                <tr><td>SSRT（估计）</td><td className="num">{Math.round(lastByGame.sst.sst.ssrtMs)} ms</td></tr>
-                <tr><td>Stop 成功率</td><td className="num">{Math.round(lastByGame.sst.sst.stopSuccessPct)}%</td></tr>
-                <tr><td>Go 准确率</td><td className="num">{Math.round(lastByGame.sst.sst.goAcc)}%</td></tr>
+                <tr><td>{t('summary.avg_ssd')}</td><td className="num">{Math.round(lastByGame.sst.sst.avgSsdMs)} ms</td></tr>
+                <tr><td>{t('summary.ssrt_est')}</td><td className="num">{Math.round(lastByGame.sst.sst.ssrtMs)} ms</td></tr>
+                <tr><td>{t('summary.stop_success')}</td><td className="num">{Math.round(lastByGame.sst.sst.stopSuccessPct)}%</td></tr>
+                <tr><td>{t('summary.go_acc')}</td><td className="num">{Math.round(lastByGame.sst.sst.goAcc)}%</td></tr>
               </tbody>
             </table>
           </div>

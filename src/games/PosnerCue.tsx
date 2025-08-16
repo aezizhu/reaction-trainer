@@ -44,24 +44,28 @@ export default function PosnerCue({ autoMode = false, onFinish }: { autoMode?: b
     setTimeout(beginTrial, 400);
   };
 
-  useEffect(() => { if (running) { panelRef.current?.focus(); beginTrial(); } /* eslint-disable-next-line */}, [running]);
+  useEffect(() => { 
+    if (running) { 
+      panelRef.current?.focus(); 
+      beginTrial(); 
+    } 
+    /* eslint-disable-next-line */
+  }, [running]);
+  
   // Keep focus on panel during run to avoid losing arrow key events
-  useEffect(() => { if (running) { panelRef.current?.focus(); } }, [idx, running]);
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-        e.preventDefault();
-        e.stopPropagation();
-        if (e.key === 'ArrowLeft') answer('L');
-        if (e.key === 'ArrowRight') answer('R');
-      }
-    };
-    window.addEventListener('keydown', onKey, { capture: true });
-    return () => window.removeEventListener('keydown', onKey, { capture: true } as any);
-  }, []);
+  useEffect(() => { 
+    if (running) { 
+      // Add a small delay to ensure the component is fully rendered
+      setTimeout(() => panelRef.current?.focus(), 10);
+    } 
+  }, [idx, running, target, cue]);
 
   useEffect(() => {
-    if (autoMode && !running && idx === 0) setRunning(true);
+    if (autoMode && !running && idx === 0) {
+      setRunning(true);
+      // Give focus immediately in auto mode
+      setTimeout(() => panelRef.current?.focus(), 100);
+    }
   }, [autoMode, running, idx]);
 
   const finish = () => {
@@ -78,8 +82,13 @@ export default function PosnerCue({ autoMode = false, onFinish }: { autoMode?: b
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">Posner Cue</div>
+        <div className="title">{t('game.posner')}</div>
         <div className="muted" style={{ fontSize: 14 }}>{t('posner.rules')}</div>
+        {!running && !autoMode && (
+          <div className="muted" style={{ fontSize: 12, textAlign: 'center', padding: '8px', background: 'rgba(124, 92, 255, 0.1)', borderRadius: '8px' }}>
+            {t('posner.help')}
+          </div>
+        )}
         <div className="row">
           <Tile title={t('ui.progress')} value={`${Math.min(idx, trials)}/${trials}`} />
         </div>
@@ -87,12 +96,20 @@ export default function PosnerCue({ autoMode = false, onFinish }: { autoMode?: b
           ref={panelRef}
           className="card panel"
           tabIndex={0}
-          onKeyDownCapture={(e) => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') e.preventDefault(); }}
           onKeyDown={(e) => {
-            if (e.key === 'ArrowLeft') { e.preventDefault(); answer('L'); }
-            if (e.key === 'ArrowRight') { e.preventDefault(); answer('R'); }
+            if (e.key === 'ArrowLeft') { 
+              e.preventDefault(); 
+              e.stopPropagation();
+              answer('L'); 
+            }
+            if (e.key === 'ArrowRight') { 
+              e.preventDefault(); 
+              e.stopPropagation();
+              answer('R'); 
+            }
           }}
-          style={{ height: 220, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', placeItems: 'center', outline: 'none' }}
+          style={{ height: 220, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', placeItems: 'center', outline: 'none', cursor: 'pointer' }}
+          onClick={() => { if (!running) { setIdx(0); setLog([]); setRunning(true); } else { panelRef.current?.focus(); } }}
         >
           <div />
           <div style={{ fontSize: 42, opacity: cue ? 1 : 0.2 }}>{ cue === 'L' ? '←' : cue === 'R' ? '→' : '·' }</div>
@@ -103,7 +120,7 @@ export default function PosnerCue({ autoMode = false, onFinish }: { autoMode?: b
         </div>
         {!autoMode && (
           <div style={{ display: 'flex', gap: 8 }}>
-            {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>Start</button> : <button className="btn secondary" onClick={() => setRunning(false)}>Pause</button>}
+            {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>{t('ui.start')}</button> : <button className="btn secondary" onClick={() => setRunning(false)}>{t('ui.pause')}</button>}
           </div>
         )}
       </section>
