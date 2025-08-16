@@ -18,56 +18,56 @@ export default function Settings() {
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 12 }}>
-        <div className="title">Settings</div>
+        <div className="title">{t('settings.title')}</div>
         <div className="row">
-          <Field label="Sound">
+          <Field label={t('settings.sound')}>
             <input type="checkbox" checked={prefs.soundEnabled} onChange={e => update({ soundEnabled: e.target.checked })} />
           </Field>
-          <Field label="Vibration">
+          <Field label={t('settings.vibration')}>
             <input type="checkbox" checked={prefs.vibrateEnabled} onChange={e => update({ vibrateEnabled: e.target.checked })} />
           </Field>
         </div>
 
-        <Group title="Reaction">
-          <NumberField label="Min Delay (ms)" value={prefs.reaction.minDelayMs} onChange={v => updateNested('reaction', { ...prefs.reaction, minDelayMs: v })} />
-          <NumberField label="Max Delay (ms)" value={prefs.reaction.maxDelayMs} onChange={v => updateNested('reaction', { ...prefs.reaction, maxDelayMs: v })} />
+        <Group title={t('game.reaction')}>
+          <NumberField label={t('settings.reaction.minDelay')} value={prefs.reaction.minDelayMs} onChange={v => updateNested('reaction', { ...prefs.reaction, minDelayMs: v })} />
+          <NumberField label={t('settings.reaction.maxDelay')} value={prefs.reaction.maxDelayMs} onChange={v => updateNested('reaction', { ...prefs.reaction, maxDelayMs: v })} />
         </Group>
 
-        <Group title="Aim">
-          <NumberField label="Target Radius (px)" value={prefs.aim.radius} onChange={v => updateNested('aim', { ...prefs.aim, radius: v })} />
-          <NumberField label="Spawn Min (ms)" value={prefs.aim.spawnMinMs} onChange={v => updateNested('aim', { ...prefs.aim, spawnMinMs: v })} />
-          <NumberField label="Spawn Max (ms)" value={prefs.aim.spawnMaxMs} onChange={v => updateNested('aim', { ...prefs.aim, spawnMaxMs: v })} />
-          <NumberField label="Duration (s)" value={prefs.aim.durationSec} onChange={v => updateNested('aim', { ...prefs.aim, durationSec: v })} />
-          <NumberField label="Target Lifetime (ms)" value={prefs.aim.targetLifeMs} onChange={v => updateNested('aim', { ...prefs.aim, targetLifeMs: v })} />
+        <Group title={t('game.aim')}>
+          <NumberField label={t('settings.aim.radius')} value={prefs.aim.radius} onChange={v => updateNested('aim', { ...prefs.aim, radius: v })} />
+          <NumberField label={t('settings.aim.spawnMin')} value={prefs.aim.spawnMinMs} onChange={v => updateNested('aim', { ...prefs.aim, spawnMinMs: v })} />
+          <NumberField label={t('settings.aim.spawnMax')} value={prefs.aim.spawnMaxMs} onChange={v => updateNested('aim', { ...prefs.aim, spawnMaxMs: v })} />
+          <NumberField label={t('settings.aim.duration')} value={prefs.aim.durationSec} onChange={v => updateNested('aim', { ...prefs.aim, durationSec: v })} />
+          <NumberField label={t('settings.aim.targetLifetime')} value={prefs.aim.targetLifeMs} onChange={v => updateNested('aim', { ...prefs.aim, targetLifeMs: v })} />
         </Group>
 
-        <Group title="Sequence">
-          <NumberField label="Show (ms)" value={prefs.sequence.showMs} onChange={v => updateNested('sequence', { ...prefs.sequence, showMs: v })} />
-          <NumberField label="Gap (ms)" value={prefs.sequence.gapMs} onChange={v => updateNested('sequence', { ...prefs.sequence, gapMs: v })} />
+        <Group title={t('game.sequence')}>
+          <NumberField label={t('settings.sequence.show')} value={prefs.sequence.showMs} onChange={v => updateNested('sequence', { ...prefs.sequence, showMs: v })} />
+          <NumberField label={t('settings.sequence.gap')} value={prefs.sequence.gapMs} onChange={v => updateNested('sequence', { ...prefs.sequence, gapMs: v })} />
         </Group>
 
-        <Group title="Go/No-Go">
-          <NumberField label="Trials" value={prefs.gng.trials} onChange={v => updateNested('gng', { ...prefs.gng, trials: v })} />
-          <NumberField label="Go Ratio (0-1)" step={0.05} value={prefs.gng.goRatio} onChange={v => updateNested('gng', { ...prefs.gng, goRatio: v })} />
-          <NumberField label="ISI (ms)" value={prefs.gng.isiMs} onChange={v => updateNested('gng', { ...prefs.gng, isiMs: v })} />
+        <Group title={t('game.gng')}>
+          <NumberField label={t('settings.gng.trials')} value={prefs.gng.trials} onChange={v => updateNested('gng', { ...prefs.gng, trials: v })} />
+          <NumberField label={t('settings.gng.goRatio')} step={0.05} value={prefs.gng.goRatio} onChange={v => updateNested('gng', { ...prefs.gng, goRatio: v })} />
+          <NumberField label={t('settings.gng.isi')} value={prefs.gng.isiMs} onChange={v => updateNested('gng', { ...prefs.gng, isiMs: v })} />
         </Group>
 
-        <Group title="Stroop">
-          <NumberField label="Total Items" value={prefs.stroop.total} onChange={v => updateNested('stroop', { ...prefs.stroop, total: v })} />
-          <NumberField label="Incongruent Ratio (0-1)" step={0.05} value={prefs.stroop.incongruentRatio} onChange={v => updateNested('stroop', { ...prefs.stroop, incongruentRatio: v })} />
+        <Group title={t('game.stroop')}>
+          <NumberField label={t('settings.stroop.total')} value={prefs.stroop.total} onChange={v => updateNested('stroop', { ...prefs.stroop, total: v })} />
+          <NumberField label={t('settings.stroop.incongruentRatio')} step={0.05} value={prefs.stroop.incongruentRatio} onChange={v => updateNested('stroop', { ...prefs.stroop, incongruentRatio: v })} />
         </Group>
 
-        <Group title="Tap Speed">
-          <NumberField label="Duration (s)" value={prefs.taps.seconds} onChange={v => updateNested('taps', { ...prefs.taps, seconds: v })} />
+        <Group title={t('game.taps')}>
+          <NumberField label={t('settings.taps.duration')} value={prefs.taps.seconds} onChange={v => updateNested('taps', { ...prefs.taps, seconds: v })} />
         </Group>
 
-        <Group title="Posner">
-          <NumberField label="Trials" value={prefs.posner.trials} onChange={v => updateNested('posner', { ...prefs.posner, trials: v })} />
-          <NumberField label="Valid Ratio (0-1)" step={0.05} value={prefs.posner.validRatio} onChange={v => updateNested('posner', { ...prefs.posner, validRatio: v })} />
-          <NumberField label="ISI (ms)" value={prefs.posner.isiMs} onChange={v => updateNested('posner', { ...prefs.posner, isiMs: v })} />
+        <Group title={t('game.posner')}>
+          <NumberField label={t('settings.posner.trials')} value={prefs.posner.trials} onChange={v => updateNested('posner', { ...prefs.posner, trials: v })} />
+          <NumberField label={t('settings.posner.validRatio')} step={0.05} value={prefs.posner.validRatio} onChange={v => updateNested('posner', { ...prefs.posner, validRatio: v })} />
+          <NumberField label={t('settings.posner.isi')} value={prefs.posner.isiMs} onChange={v => updateNested('posner', { ...prefs.posner, isiMs: v })} />
         </Group>
 
-        <div className="muted" style={{ fontSize: 12 }}>Settings are saved to your browser automatically.</div>
+        <div className="muted" style={{ fontSize: 12 }}>{t('settings.autoSave')}</div>
       </section>
     </div>
   );

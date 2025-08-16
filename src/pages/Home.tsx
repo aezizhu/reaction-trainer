@@ -18,12 +18,12 @@ export default function Home() {
         <Card title={`${t('game.reaction')}`} to="/reaction" desc={t('rt.rules')} />
         <Card title={`${t('game.aim')}`} to="/aim" desc={t('aim.rules')} />
         <Card title={`${t('game.sequence')}`} to="/sequence" desc={t('seq.rules')} />
-        <Card title={`Go/No-Go`} to="/gng" desc={t('gng.rules', { n: 30 })} />
-        <Card title={`Stroop`} to="/stroop" desc={t('stroop.rules')} />
+        <Card title={t('game.gng')} to="/gng" desc={t('gng.rules', { n: 30 })} />
+        <Card title={t('game.stroop')} to="/stroop" desc={t('stroop.rules')} />
         <Card title={`${t('game.taps')}`} to="/taps" desc={t('aim.clickHere')} />
-        <Card title={`Posner Cue`} to="/posner" desc={t('posner.rules')} />
-        <Card title={`Stop-Signal`} to="/sst" desc={t('sst.rules')} />
-        <Card title={`${t('game.crt')}`} to="/crt" desc={'4-choice reaction with D/F/J/K'} />
+        <Card title={t('game.posner')} to="/posner" desc={t('posner.rules')} />
+        <Card title={t('game.sst')} to="/sst" desc={t('sst.rules')} />
+        <Card title={`${t('game.crt')}`} to="/crt" desc={t('crt.rules')} />
       </section>
     </div>
   );

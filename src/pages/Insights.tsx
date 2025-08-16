@@ -19,15 +19,15 @@ export default function Insights() {
           <Tile title={t('insights.sessions7d')} value={stats.last7d.length.toString()} />
           <Tile title={t('insights.doneToday')} value={String(todayCount)} />
           <Tile title={t('insights.streakDays')} value={String(streakDays)} />
-          <Tile title="Reaction" value={String(stats.totals.reaction)} />
-          <Tile title="Aim" value={String(stats.totals.aim)} />
-          <Tile title="Sequence" value={String(stats.totals.sequence)} />
-          <Tile title="Go/No-Go" value={String(stats.totals.gng)} />
-          <Tile title="Stroop" value={String(stats.totals.stroop)} />
-          <Tile title="Tap" value={String(stats.totals.taps)} />
-          <Tile title="Posner" value={String(stats.totals.posner)} />
-          <Tile title="SST" value={String(stats.totals.sst)} />
-          <Tile title="CRT" value={String(stats.totals.crt)} />
+          <Tile title={t('game.reaction')} value={String(stats.totals.reaction)} />
+          <Tile title={t('game.aim')} value={String(stats.totals.aim)} />
+          <Tile title={t('game.sequence')} value={String(stats.totals.sequence)} />
+          <Tile title={t('game.gng')} value={String(stats.totals.gng)} />
+          <Tile title={t('game.stroop')} value={String(stats.totals.stroop)} />
+          <Tile title={t('game.taps')} value={String(stats.totals.taps)} />
+          <Tile title={t('game.posner')} value={String(stats.totals.posner)} />
+          <Tile title={t('game.sst')} value={String(stats.totals.sst)} />
+          <Tile title={t('game.crt')} value={String(stats.totals.crt)} />
         </div>
         <ul style={{ display: 'grid', gap: 8 }}>
           {stats.recommendations.map((r, i) => (
@@ -108,13 +108,13 @@ export default function Insights() {
       </section>
 
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div style={{ fontWeight: 800 }}>Lifestyle tips (general)</div>
+        <div style={{ fontWeight: 800 }}>{t('insights.lifestyleTips')}</div>
         <ul className="muted" style={{ fontSize: 14, display: 'grid', gap: 6 }}>
-          <li>Sleep 7–9 hours; maintain regular schedule.</li>
-          <li>Exercise ≥150 minutes/week at moderate intensity.</li>
-          <li>Balanced nutrition; consider Omega-3 and vitamins.</li>
-          <li>Stress management (meditation/breathing/mindfulness).</li>
-          <li>Alternate different trainings to avoid habituation.</li>
+          <li>{t('insights.lifestyle1')}</li>
+          <li>{t('insights.lifestyle2')}</li>
+          <li>{t('insights.lifestyle3')}</li>
+          <li>{t('insights.lifestyle4')}</li>
+          <li>{t('insights.lifestyle5')}</li>
         </ul>
       </section>
     </div>

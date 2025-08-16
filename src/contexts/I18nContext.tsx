@@ -94,6 +94,52 @@ const dict: Dict = {
   'color.green': { en: 'GREEN', zh: '绿色', es: 'VERDE', ar: 'أخضر', ru: 'ЗЕЛЁНЫЙ' },
   'color.blue': { en: 'BLUE', zh: '蓝色', es: 'AZUL', ar: 'أزرق', ru: 'СИНИЙ' },
   'color.yellow': { en: 'YELLOW', zh: '黄色', es: 'AMARILLO', ar: 'أصفر', ru: 'ЖЁЛТЫЙ' },
+  
+  // Settings page
+  'settings.title': { en: 'Settings', zh: '设置', es: 'Configuración', ar: 'الإعدادات', ru: 'Настройки' },
+  'settings.sound': { en: 'Sound', zh: '声音', es: 'Sonido', ar: 'الصوت', ru: 'Звук' },
+  'settings.vibration': { en: 'Vibration', zh: '震动', es: 'Vibración', ar: 'الاهتزاز', ru: 'Вибрация' },
+  'settings.autoSave': { en: 'Settings are saved to your browser automatically.', zh: '设置会自动保存到您的浏览器。', es: 'La configuración se guarda automáticamente en tu navegador.', ar: 'يتم حفظ الإعدادات تلقائياً في متصفحك.', ru: 'Настройки автоматически сохраняются в вашем браузере.' },
+  
+  // Settings - Reaction
+  'settings.reaction.minDelay': { en: 'Min Delay (ms)', zh: '最小延迟 (毫秒)', es: 'Retraso Mín (ms)', ar: 'الحد الأدنى للتأخير (مللي ثانية)', ru: 'Мин. задержка (мс)' },
+  'settings.reaction.maxDelay': { en: 'Max Delay (ms)', zh: '最大延迟 (毫秒)', es: 'Retraso Máx (ms)', ar: 'الحد الأقصى للتأخير (مللي ثانية)', ru: 'Макс. задержка (мс)' },
+  
+  // Settings - Aim
+  'settings.aim.radius': { en: 'Target Radius (px)', zh: '目标半径 (像素)', es: 'Radio del Objetivo (px)', ar: 'نصف قطر الهدف (بكسل)', ru: 'Радиус цели (пикс)' },
+  'settings.aim.spawnMin': { en: 'Spawn Min (ms)', zh: '生成最小间隔 (毫秒)', es: 'Generación Mín (ms)', ar: 'الحد الأدنى للتوليد (مللي ثانية)', ru: 'Мин. интервал появления (мс)' },
+  'settings.aim.spawnMax': { en: 'Spawn Max (ms)', zh: '生成最大间隔 (毫秒)', es: 'Generación Máx (ms)', ar: 'الحد الأقصى للتوليد (مللي ثانية)', ru: 'Макс. интервал появления (мс)' },
+  'settings.aim.duration': { en: 'Duration (s)', zh: '持续时间 (秒)', es: 'Duración (s)', ar: 'المدة (ثانية)', ru: 'Длительность (с)' },
+  'settings.aim.targetLifetime': { en: 'Target Lifetime (ms)', zh: '目标存活时间 (毫秒)', es: 'Vida del Objetivo (ms)', ar: 'عمر الهدف (مللي ثانية)', ru: 'Время жизни цели (мс)' },
+  
+  // Settings - Sequence
+  'settings.sequence.show': { en: 'Show (ms)', zh: '显示时间 (毫秒)', es: 'Mostrar (ms)', ar: 'عرض (مللي ثانية)', ru: 'Показать (мс)' },
+  'settings.sequence.gap': { en: 'Gap (ms)', zh: '间隔时间 (毫秒)', es: 'Intervalo (ms)', ar: 'الفاصل (مللي ثانية)', ru: 'Интервал (мс)' },
+  
+  // Settings - Go/No-Go
+  'settings.gng.trials': { en: 'Trials', zh: '试验次数', es: 'Intentos', ar: 'المحاولات', ru: 'Попытки' },
+  'settings.gng.goRatio': { en: 'Go Ratio (0-1)', zh: 'Go 比例 (0-1)', es: 'Proporción Go (0-1)', ar: 'نسبة Go (0-1)', ru: 'Соотношение Go (0-1)' },
+  'settings.gng.isi': { en: 'ISI (ms)', zh: 'ISI (毫秒)', es: 'ISI (ms)', ar: 'ISI (مللي ثانية)', ru: 'ISI (мс)' },
+  
+  // Settings - Stroop
+  'settings.stroop.total': { en: 'Total Items', zh: '总项目数', es: 'Total de Elementos', ar: 'إجمالي العناصر', ru: 'Всего элементов' },
+  'settings.stroop.incongruentRatio': { en: 'Incongruent Ratio (0-1)', zh: '不一致比例 (0-1)', es: 'Proporción Incongruente (0-1)', ar: 'نسبة عدم التطابق (0-1)', ru: 'Соотношение неконгруэнтности (0-1)' },
+  
+  // Settings - Tap Speed
+  'settings.taps.duration': { en: 'Duration (s)', zh: '持续时间 (秒)', es: 'Duración (s)', ar: 'المدة (ثانية)', ru: 'Длительность (с)' },
+  
+  // Settings - Posner
+  'settings.posner.trials': { en: 'Trials', zh: '试验次数', es: 'Intentos', ar: 'المحاولات', ru: 'Попытки' },
+  'settings.posner.validRatio': { en: 'Valid Ratio (0-1)', zh: '有效比例 (0-1)', es: 'Proporción Válida (0-1)', ar: 'نسبة الصحة (0-1)', ru: 'Соотношение валидности (0-1)' },
+  'settings.posner.isi': { en: 'ISI (ms)', zh: 'ISI (毫秒)', es: 'ISI (ms)', ar: 'ISI (مللي ثانية)', ru: 'ISI (мс)' },
+  
+  // Insights - Lifestyle tips
+  'insights.lifestyleTips': { en: 'Lifestyle tips (general)', zh: '生活方式建议（通用）', es: 'Consejos de estilo de vida (general)', ar: 'نصائح نمط الحياة (عامة)', ru: 'Советы по образу жизни (общие)' },
+  'insights.lifestyle1': { en: 'Sleep 7–9 hours; maintain regular schedule.', zh: '睡眠7-9小时；保持规律作息。', es: 'Duerme 7-9 horas; mantén un horario regular.', ar: 'نم 7-9 ساعات؛ حافظ على جدول منتظم.', ru: 'Спите 7-9 часов; соблюдайте регулярный режим.' },
+  'insights.lifestyle2': { en: 'Exercise ≥150 minutes/week at moderate intensity.', zh: '每周进行≥150分钟中等强度运动。', es: 'Ejercita ≥150 minutos/semana a intensidad moderada.', ar: 'تمرن ≥150 دقيقة/أسبوع بكثافة معتدلة.', ru: 'Занимайтесь спортом ≥150 минут/неделю с умеренной интенсивностью.' },
+  'insights.lifestyle3': { en: 'Balanced nutrition; consider Omega-3 and vitamins.', zh: '均衡营养；考虑补充Omega-3和维生素。', es: 'Nutrición equilibrada; considera Omega-3 y vitaminas.', ar: 'تغذية متوازنة؛ فكر في أوميغا-3 والفيتامينات.', ru: 'Сбалансированное питание; рассмотрите Омега-3 и витамины.' },
+  'insights.lifestyle4': { en: 'Stress management (meditation/breathing/mindfulness).', zh: '压力管理（冥想/呼吸/正念）。', es: 'Manejo del estrés (meditación/respiración/atención plena).', ar: 'إدارة التوتر (التأمل/التنفس/اليقظة).', ru: 'Управление стрессом (медитация/дыхание/осознанность).' },
+  'insights.lifestyle5': { en: 'Alternate different trainings to avoid habituation.', zh: '交替进行不同训练以避免习惯化。', es: 'Alterna diferentes entrenamientos para evitar la habituación.', ar: 'بدّل بين التدريبات المختلفة لتجنب التعود.', ru: 'Чередуйте разные тренировки, чтобы избежать привыкания.' },
 
   'sst.rules': { en: 'Respond with arrow keys. If you hear a beep, try to withhold the response (adaptive SSD).', zh: '按方向键响应箭头。如听到“哔”则尽量抑制不按（Stop 信号延迟自适应）。', es: 'Responde con las flechas. Si escuchas un pitido, intenta inhibir la respuesta (SSD adaptativo).', ar: 'استجب بمفاتيح الأسهم. إذا سمعت صفيرًا فحاول منع الاستجابة (SSD تكيفي).', ru: 'Отвечайте стрелками. При сигнале (пип) постарайтесь удержаться (адаптивный SSD).' },
 

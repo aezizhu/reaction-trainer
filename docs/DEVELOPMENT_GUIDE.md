@@ -111,6 +111,9 @@ Fix Log (2025-01):
 - Fixed UnifiedTraining.tsx step titles not updating when language changes - added `t` function to useMemo dependencies.
 - Fixed ChoiceRT.tsx, Stroop.tsx, and TapSpeed.tsx missing translations for game titles, rules, and button text.
 - Added color name translations for Stroop game to support all languages properly.
+- Fixed Home.tsx, Insights.tsx, and Settings.tsx missing translations for all UI elements, game titles, and settings labels.
+- Added comprehensive translations for settings page including all game configuration options.
+- Added lifestyle tips translations for insights page.
 
 ### 5. Implementation Notes by Game
 - ReactionTime.tsx: phases `idle → wait → go → result`; early click in WAIT counts as 1000ms; saves attempts/avg/best; prefs: min/max delay; sound/vibration supported.
