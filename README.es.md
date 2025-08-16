@@ -33,4 +33,4 @@ pnpm build
 ```
 
 ## Licencia
-MIT
+Apache-2.0

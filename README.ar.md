@@ -33,4 +33,4 @@ pnpm build
 ```
 
 ## الترخيص
-MIT
+Apache-2.0

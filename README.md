@@ -87,7 +87,7 @@ pnpm build
 - Write clear commit messages and PR descriptions.
 
 ### License
-MIT
+Apache-2.0
 
 
 
