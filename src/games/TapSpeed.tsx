@@ -62,7 +62,7 @@ export default function TapSpeed({ autoMode = false, attempts = 3, onFinish }: {
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
         <div className="title">{t('game.taps')}</div>
-        <div className="muted" style={{ fontSize: 14 }}>Tap as fast as possible within 5 seconds (or press Space). Focus on rhythm stability.</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('taps.rules')}</div>
         <div className="row">
           <Tile title={t('ui.clicks')} value={String(taps)} />
           <Tile title={t('ui.timeLeft')} value={`${left}s`} />

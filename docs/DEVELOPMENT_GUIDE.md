@@ -108,6 +108,9 @@ Fix Log (2025-01):
 - Updated license from MIT to Apache-2.0 across all documentation.
 - Fixed PosnerCue.tsx keyboard input issue - removed global event listener closure problem, improved focus management.
 - Added help text for Posner Cue game to guide users on how to interact with it.
+- Fixed UnifiedTraining.tsx step titles not updating when language changes - added `t` function to useMemo dependencies.
+- Fixed ChoiceRT.tsx, Stroop.tsx, and TapSpeed.tsx missing translations for game titles, rules, and button text.
+- Added color name translations for Stroop game to support all languages properly.
 
 ### 5. Implementation Notes by Game
 - ReactionTime.tsx: phases `idle → wait → go → result`; early click in WAIT counts as 1000ms; saves attempts/avg/best; prefs: min/max delay; sound/vibration supported.

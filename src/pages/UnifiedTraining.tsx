@@ -29,7 +29,7 @@ export default function UnifiedTraining() {
     { key: 'posner', title: t('game.posner'), render: (done) => <PosnerCue autoMode onFinish={done} /> },
     { key: 'sst', title: t('game.sst'), render: (done) => <StopSignal autoMode onFinish={done} /> },
     { key: 'taps', title: `${t('game.taps')}`, render: (done) => <TapSpeed autoMode attempts={3} onFinish={done} /> },
-  ], []);
+  ], [t]);
 
   const next = useCallback(() => setStepIndex(i => Math.min(i + 1, steps.length - 1)), [steps.length]);
 

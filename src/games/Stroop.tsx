@@ -7,6 +7,14 @@ type ColorKey = 'RED' | 'GREEN' | 'BLUE' | 'YELLOW';
 const COLORS: Record<ColorKey, string> = { RED: '#ff5c7a', GREEN: '#3ad29f', BLUE: '#5aa9ff', YELLOW: '#ffcc66' };
 const KEYS: Record<string, ColorKey> = { d: 'RED', f: 'GREEN', j: 'BLUE', k: 'YELLOW' };
 
+// Color name mapping for internationalization
+const COLOR_NAMES: Record<ColorKey, string> = {
+  RED: 'color.red',
+  GREEN: 'color.green', 
+  BLUE: 'color.blue',
+  YELLOW: 'color.yellow'
+};
+
 interface Trial { word: ColorKey; color: ColorKey; congruent: boolean }
 
 export default function Stroop({ autoMode = false, onFinish }: { autoMode?: boolean; onFinish?: () => void } = {}) {
@@ -77,7 +85,7 @@ export default function Stroop({ autoMode = false, onFinish }: { autoMode?: bool
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">Stroop</div>
+        <div className="title">{t('game.stroop')}</div>
         <div className="muted" style={{ fontSize: 14 }}>{t('stroop.rules')}</div>
         <div className="row">
           <Tile title={t('ui.progress')} value={`${Math.min(idx, total)}/${total}`} />
@@ -91,18 +99,18 @@ export default function Stroop({ autoMode = false, onFinish }: { autoMode?: bool
         >
           {trial ? (
             <div style={{ fontSize: 64, fontWeight: 900, color: COLORS[trial.color], transition: 'transform .2s ease' }}>
-              {trial.word}
+              {t(COLOR_NAMES[trial.word])}
             </div>
           ) : (
             <div className="muted">{running ? t('stroop.readyNext') : t('rt.clickToStart')}</div>
           )}
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
-          {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>Start</button> : <button className="btn secondary" onClick={() => setRunning(false)}>Pause</button>}
+                      {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>{t('ui.start')}</button> : <button className="btn secondary" onClick={() => setRunning(false)}>{t('ui.pause')}</button>}
           {trial && (
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {(Object.keys(COLORS) as ColorKey[]).map((c) => (
-                <button key={c} className="btn" style={{ background: COLORS[c] }} onClick={() => answer(c)}>{c}</button>
+                <button key={c} className="btn" style={{ background: COLORS[c] }} onClick={() => answer(c)}>{t(COLOR_NAMES[c])}</button>
               ))}
             </div>
           )}

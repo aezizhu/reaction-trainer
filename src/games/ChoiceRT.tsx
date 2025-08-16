@@ -56,7 +56,7 @@ export default function ChoiceRT({ autoMode = false, trials = 40, onFinish }: { 
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
         <div className="title">{t('game.crt')}</div>
-        <div className="muted" style={{ fontSize: 14 }}>Respond using D/F/J/K matching the position. Aim for both speed and accuracy.</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('crt.rules')}</div>
         <div className="card panel" style={{ height: 220, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, placeItems: 'center' }}>
           {[0,1,2,3].map(i => (
             <div key={i} className="card" style={{ width: 100, height: 100, display: 'grid', placeItems: 'center', background: cue === i ? '#7c5cff' : undefined }}>
@@ -66,7 +66,7 @@ export default function ChoiceRT({ autoMode = false, trials = 40, onFinish }: { 
         </div>
         {!autoMode && (
           <div style={{ display: 'flex', gap: 8 }}>
-            {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>Start</button> : <button className="btn secondary" onClick={() => setRunning(false)}>Pause</button>}
+            {!running ? <button className="btn" onClick={() => { setIdx(0); setLog([]); setRunning(true); }}>{t('ui.start')}</button> : <button className="btn secondary" onClick={() => setRunning(false)}>{t('ui.pause')}</button>}
           </div>
         )}
       </section>

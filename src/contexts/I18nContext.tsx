@@ -82,6 +82,18 @@ const dict: Dict = {
 
   'posner.rules': { en: 'Follow left/right arrow cue. When target appears, press the corresponding arrow key (←/→).', zh: '依据左/右箭头线索定向。目标出现后按对应方向键（←/→）。', es: 'Sigue la señal de flecha izquierda/derecha. Al aparecer el objetivo, presiona la flecha correspondiente (←/→).', ar: 'اتبع إشارة السهم لليسار/ليمين. عند ظهور الهدف اضغط السهم المقابل (←/→).', ru: 'Следуйте подсказке влево/вправо. Когда цель появляется, нажмите соответствующую стрелку (←/→).' },
   'posner.help': { en: 'Click the panel below to start, then use arrow keys to respond', zh: '点击下方面板开始，然后使用方向键响应', es: 'Haz clic en el panel de abajo para empezar, luego usa las teclas de flecha para responder', ar: 'انقر على اللوحة أدناه للبدء، ثم استخدم مفاتيح الأسهم للاستجابة', ru: 'Нажмите на панель ниже, чтобы начать, затем используйте клавиши со стрелками для ответа' },
+  
+  // Choice Reaction Time
+  'crt.rules': { en: 'Respond using D/F/J/K matching the position. Aim for both speed and accuracy.', zh: '使用D/F/J/K键匹配位置进行响应。追求速度和准确性的平衡。', es: 'Responde usando D/F/J/K para coincidir con la posición. Busca velocidad y precisión.', ar: 'استجب باستخدام D/F/J/K لمطابقة الموقع. اهتم بالسرعة والدقة.', ru: 'Отвечайте клавишами D/F/J/K, соответствующими позиции. Стремитесь к скорости и точности.' },
+  
+  // Tap Speed
+  'taps.rules': { en: 'Tap as fast as possible within 5 seconds (or press Space). Focus on rhythm stability.', zh: '在5秒内尽可能快地点击（或按空格键）。注意保持节奏稳定。', es: 'Toca lo más rápido posible en 5 segundos (o presiona Espacio). Concéntrate en la estabilidad del ritmo.', ar: 'انقر بأسرع ما يمكن خلال 5 ثوانٍ (أو اضغط المسافة). ركّز على ثبات الإيقاع.', ru: 'Нажимайте как можно быстрее в течение 5 секунд (или нажмите Пробел). Сосредоточьтесь на стабильности ритма.' },
+  
+  // Color names for Stroop
+  'color.red': { en: 'RED', zh: '红色', es: 'ROJO', ar: 'أحمر', ru: 'КРАСНЫЙ' },
+  'color.green': { en: 'GREEN', zh: '绿色', es: 'VERDE', ar: 'أخضر', ru: 'ЗЕЛЁНЫЙ' },
+  'color.blue': { en: 'BLUE', zh: '蓝色', es: 'AZUL', ar: 'أزرق', ru: 'СИНИЙ' },
+  'color.yellow': { en: 'YELLOW', zh: '黄色', es: 'AMARILLO', ar: 'أصفر', ru: 'ЖЁЛТЫЙ' },
 
   'sst.rules': { en: 'Respond with arrow keys. If you hear a beep, try to withhold the response (adaptive SSD).', zh: '按方向键响应箭头。如听到“哔”则尽量抑制不按（Stop 信号延迟自适应）。', es: 'Responde con las flechas. Si escuchas un pitido, intenta inhibir la respuesta (SSD adaptativo).', ar: 'استجب بمفاتيح الأسهم. إذا سمعت صفيرًا فحاول منع الاستجابة (SSD تكيفي).', ru: 'Отвечайте стрелками. При сигнале (пип) постарайтесь удержаться (адаптивный SSD).' },
 
