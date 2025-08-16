@@ -97,6 +97,22 @@ const dict: Dict = {
   'insights.startTraining': { en: 'Start training to generate personalized insights.', zh: '开始训练吧！完成任意3轮后将生成个性化建议。', es: 'Comienza a entrenar para generar recomendaciones personalizadas.', ar: 'ابدأ التدريب لإنشاء رؤى مخصصة.', ru: 'Начните тренироваться, чтобы получить персональные рекомендации.' },
   'charts.current': { en: 'Current', zh: '本次', es: 'Actual', ar: 'الحالي', ru: 'Текущий' },
   'charts.avg7d': { en: '7d avg', zh: '7日均', es: '7d prom', ar: 'متوسط 7 أيام', ru: 'ср. за 7 дн.' },
+  
+  // Training page
+  'training.title': { en: 'Automated Training', zh: '自动训练', es: 'Entrenamiento Automatizado', ar: 'التدريب الآلي', ru: 'Автоматическая тренировка' },
+  'training.description': { en: 'The system runs a curated sequence. It auto-starts and saves each game; focus on performing.', zh: '系统将按顺序运行精选训练项目。每个训练会自动开始并保存；请专注于训练表现。', es: 'El sistema ejecuta una secuencia seleccionada. Inicia y guarda automáticamente cada juego; concéntrate en el rendimiento.', ar: 'يقوم النظام بتشغيل تسلسل منظم. يبدأ ويحفظ كل لعبة تلقائياً؛ ركز على الأداء.', ru: 'Система запускает подобранную последовательность. Автоматически запускает и сохраняет каждую игру; сосредоточьтесь на выполнении.' },
+  'training.warmup': { en: 'Warmup', zh: '热身', es: 'Calentamiento', ar: 'الإحماء', ru: 'Разминка' },
+  'training.metrics': { en: 'Metrics', zh: '指标', es: 'Métricas', ar: 'المقاييس', ru: 'Метрики' },
+  'training.value': { en: 'Value', zh: '数值', es: 'Valor', ar: 'القيمة', ru: 'Значение' },
+  'training.current_ms': { en: 'Current (ms)', zh: '当前 (ms)', es: 'Actual (ms)', ar: 'الحالي (مللي ثانية)', ru: 'Текущий (мс)' },
+  'training.avg_ms': { en: '7d avg (ms)', zh: '7日均值 (ms)', es: 'Promedio 7d (ms)', ar: 'متوسط 7 أيام (مللي ثانية)', ru: 'Среднее за 7д (мс)' },
+  'training.lower_better': { en: 'lower is better', zh: '数值越低越好', es: 'menor es mejor', ar: 'الأقل هو الأفضل', ru: 'чем ниже, тем лучше' },
+  'training.higher_better': { en: 'higher is better', zh: '数值越高越好', es: 'mayor es mejor', ar: 'الأعلى هو الأفضل', ru: 'чем выше, тем лучше' },
+  'training.recommendations': { en: 'Recommendations', zh: '建议', es: 'Recomendaciones', ar: 'التوصيات', ru: 'Рекомендации' },
+  'training.rec1': { en: 'Practice daily; prioritize sleep and rest.', zh: '每日练习；注意保证睡眠和休息。', es: 'Practica diariamente; prioriza el sueño y el descanso.', ar: 'تدرب يومياً؛ أعط الأولوية للنوم والراحة.', ru: 'Тренируйтесь ежедневно; уделяйте внимание сну и отдыху.' },
+  'training.rec2': { en: 'If RT > 7d average, shorten cue interval and reduce distractions next round.', zh: '如果反应时间高于7日均值，下轮缩短提示间隔并减少干扰。', es: 'Si el TR > promedio 7d, acorta el intervalo de señal y reduce las distracciones en la siguiente ronda.', ar: 'إذا كان زمن الاستجابة > متوسط 7 أيام، قصر فترة الإشارة وقلل المشتتات في الجولة القادمة.', ru: 'Если ВР > среднего за 7 дней, сократите интервал сигнала и уменьшите отвлекающие факторы в следующем раунде.' },
+  'training.rec3': { en: 'If aim accuracy below average, increase target size then ramp difficulty.', zh: '如果瞄准准确率低于平均值，增大目标尺寸后再逐步提高难度。', es: 'Si la precisión de puntería está por debajo del promedio, aumenta el tamaño del objetivo y luego incrementa la dificultad.', ar: 'إذا كانت دقة التصويب أقل من المتوسط، زد حجم الهدف ثم ارفع الصعوبة تدريجياً.', ru: 'Если точность прицеливания ниже средней, увеличьте размер цели, затем постепенно повышайте сложность.' },
+  'training.rec4': { en: 'For tap speed, try short (3s) sprints and focus on rhythm stability.', zh: '对于点击速度，尝试短时间（3秒）冲刺并注意保持节奏稳定。', es: 'Para la velocidad de toque, prueba sprints cortos (3s) y concéntrate en la estabilidad del ritmo.', ar: 'لسرعة النقر، جرب السباقات القصيرة (3 ثوان) وركز على ثبات الإيقاع.', ru: 'Для скорости нажатий попробуйте короткие (3с) спринты и сосредоточьтесь на стабильности ритма.' }
 };
 
 type I18nContextValue = {

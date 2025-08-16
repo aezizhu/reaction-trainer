@@ -20,14 +20,14 @@ export default function UnifiedTraining() {
   const { records } = useHistory();
   const { t } = useI18n();
   const steps: Step[] = useMemo(() => [
-    { key: 'reaction', title: `${t('game.reaction')} Warmup`, render: (done) => <ReactionTime autoMode targetAttempts={8} onFinish={done} /> },
+    { key: 'reaction', title: `${t('game.reaction')} ${t('training.warmup')}`, render: (done) => <ReactionTime autoMode targetAttempts={8} onFinish={done} /> },
     { key: 'aim', title: `${t('game.aim')}`, render: (done) => <AimTrainer autoMode onFinish={done} /> },
     { key: 'sequence', title: `${t('game.sequence')}`, render: (done) => <SequenceMemory autoMode onFinish={done} /> },
     { key: 'crt', title: `${t('game.crt')}`, render: (done) => <ChoiceRT autoMode trials={24} onFinish={done} /> },
-    { key: 'stroop', title: 'Stroop', render: (done) => <Stroop autoMode onFinish={done} /> },
-    { key: 'gng', title: 'Go/No-Go', render: (done) => <GoNoGo autoMode onFinish={done} /> },
-    { key: 'posner', title: 'Posner Cue', render: (done) => <PosnerCue autoMode onFinish={done} /> },
-    { key: 'sst', title: 'Stop-Signal', render: (done) => <StopSignal autoMode onFinish={done} /> },
+    { key: 'stroop', title: t('game.stroop'), render: (done) => <Stroop autoMode onFinish={done} /> },
+    { key: 'gng', title: t('game.gng'), render: (done) => <GoNoGo autoMode onFinish={done} /> },
+    { key: 'posner', title: t('game.posner'), render: (done) => <PosnerCue autoMode onFinish={done} /> },
+    { key: 'sst', title: t('game.sst'), render: (done) => <StopSignal autoMode onFinish={done} /> },
     { key: 'taps', title: `${t('game.taps')}`, render: (done) => <TapSpeed autoMode attempts={3} onFinish={done} /> },
   ], []);
 
@@ -36,8 +36,8 @@ export default function UnifiedTraining() {
   return (
     <div className="container" style={{ display: 'grid', gap: 16 }}>
       <section className="card panel" style={{ display: 'grid', gap: 8 }}>
-        <div className="title">Automated Training</div>
-        <div className="muted" style={{ fontSize: 14 }}>The system runs a curated sequence. It auto-starts and saves each game; focus on performing.</div>
+        <div className="title">{t('training.title')}</div>
+        <div className="muted" style={{ fontSize: 14 }}>{t('training.description')}</div>
         {stepIndex < steps.length ? (
           <>
             <div className="card panel" style={{ display: 'grid', gap: 8 }}>
@@ -78,10 +78,10 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
       <div className="grid">
         {lastByGame.reaction && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Reaction (lower is better)</div>
-            <MiniBars current={Math.round(lastByGame.reaction.reaction.averageMs)} avg={Math.round(rtAvg7)} labels={["Current (ms)", "7d avg (ms)"] as any} />
+            <div className="muted" style={{ fontSize: 12 }}>{t('game.reaction')} ({t('training.lower_better')})</div>
+            <MiniBars current={Math.round(lastByGame.reaction.reaction.averageMs)} avg={Math.round(rtAvg7)} labels={[t('training.current_ms'), t('training.avg_ms')] as any} />
             <table className="table" style={{ marginTop: 10 }}>
-              <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
+              <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
                 <tr><td>本次平均</td><td className="num">{Math.round(lastByGame.reaction.reaction.averageMs)} ms</td></tr>
                 <tr><td>本次最佳</td><td className="num">{Math.round(lastByGame.reaction.reaction.bestMs)} ms</td></tr>
@@ -92,10 +92,10 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
         {lastByGame.aim && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Aim hits (higher is better)</div>
-            <MiniBars current={lastByGame.aim.aim.hits} avg={Math.round(aimAvg7)} labels={["Current", "7d avg"] as any} />
+            <div className="muted" style={{ fontSize: 12 }}>{t('game.aim')} ({t('training.higher_better')})</div>
+            <MiniBars current={lastByGame.aim.aim.hits} avg={Math.round(aimAvg7)} labels={[t('charts.current'), t('charts.avg7d')] as any} />
             <table className="table" style={{ marginTop: 10 }}>
-              <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
+              <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
                 <tr><td>命中</td><td className="num">{lastByGame.aim.aim.hits}</td></tr>
                 <tr><td>准确率</td><td className="num">{Math.round(lastByGame.aim.aim.accuracy)}%</td></tr>
@@ -107,10 +107,10 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
         {lastByGame.taps && (
           <div className="card panel">
-            <div className="muted" style={{ fontSize: 12 }}>Tap speed (higher is better)</div>
-            <MiniBars current={lastByGame.taps.taps.taps} avg={Math.round(tapsAvg7)} labels={["Current", "7d avg"] as any} />
+            <div className="muted" style={{ fontSize: 12 }}>{t('game.taps')} ({t('training.higher_better')})</div>
+            <MiniBars current={lastByGame.taps.taps.taps} avg={Math.round(tapsAvg7)} labels={[t('charts.current'), t('charts.avg7d')] as any} />
             <table className="table" style={{ marginTop: 10 }}>
-              <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
+              <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
                 <tr><td>本次最佳</td><td className="num">{lastByGame.taps.taps.taps}</td></tr>
                 <tr><td>本次平均间隔</td><td className="num">{Math.round(lastByGame.taps.taps.avgIntervalMs)} ms</td></tr>
@@ -123,7 +123,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
           <div className="card panel">
             <div className="muted" style={{ fontSize: 12 }}>Choice Reaction (CRT)</div>
             <table className="table" style={{ marginTop: 10 }}>
-              <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
+              <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
                 <tr><td>平均RT</td><td className="num">{Math.round(lastByGame.crt.crt.avgRtMs)} ms</td></tr>
                 <tr><td>准确率</td><td className="num">{Math.round(lastByGame.crt.crt.accuracy)}%</td></tr>
@@ -136,7 +136,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
           <div className="card panel">
             <div className="muted" style={{ fontSize: 12 }}>Stroop</div>
             <table className="table" style={{ marginTop: 10 }}>
-              <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
+              <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
                 <tr><td>一致平均</td><td className="num">{Math.round(lastByGame.stroop.stroop.congruentAvgMs)} ms</td></tr>
                 <tr><td>不一致平均</td><td className="num">{Math.round(lastByGame.stroop.stroop.incongruentAvgMs)} ms</td></tr>
@@ -150,7 +150,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
           <div className="card panel">
             <div className="muted" style={{ fontSize: 12 }}>Go/No-Go</div>
             <table className="table" style={{ marginTop: 10 }}>
-              <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
+              <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
                 <tr><td>Go 正确率</td><td className="num">{Math.round(lastByGame.gng.gng.goAcc)}%</td></tr>
                 <tr><td>No-Go 正确率</td><td className="num">{Math.round(lastByGame.gng.gng.nogoAcc)}%</td></tr>
@@ -163,7 +163,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
           <div className="card panel">
             <div className="muted" style={{ fontSize: 12 }}>Posner Cue</div>
             <table className="table" style={{ marginTop: 10 }}>
-              <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
+              <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
                 <tr><td>有效提示平均</td><td className="num">{Math.round(lastByGame.posner.posner.validAvgMs)} ms</td></tr>
                 <tr><td>无效提示平均</td><td className="num">{Math.round(lastByGame.posner.posner.invalidAvgMs)} ms</td></tr>
@@ -177,7 +177,7 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
           <div className="card panel">
             <div className="muted" style={{ fontSize: 12 }}>Stop-Signal</div>
             <table className="table" style={{ marginTop: 10 }}>
-              <thead><tr><th>指标</th><th className="num">数值</th></tr></thead>
+              <thead><tr><th>{t('training.metrics')}</th><th className="num">{t('training.value')}</th></tr></thead>
               <tbody>
                 <tr><td>平均SSD</td><td className="num">{Math.round(lastByGame.sst.sst.avgSsdMs)} ms</td></tr>
                 <tr><td>SSRT（估计）</td><td className="num">{Math.round(lastByGame.sst.sst.ssrtMs)} ms</td></tr>
@@ -189,16 +189,16 @@ function Summary({ records, onRestart }: { records: any[]; onRestart: () => void
         )}
       </div>
       <div className="card panel">
-        <div className="muted" style={{ fontSize: 12 }}>Recommendations</div>
+        <div className="muted" style={{ fontSize: 12 }}>{t('training.recommendations')}</div>
         <ul className="muted" style={{ fontSize: 14, display: 'grid', gap: 6 }}>
-          <li>Practice daily; prioritize sleep and rest.</li>
-          <li>If RT &gt; 7d average, shorten cue interval and reduce distractions next round.</li>
-          <li>If aim accuracy below average, increase target size then ramp difficulty.</li>
-          <li>For tap speed, try short (3s) sprints and focus on rhythm stability.</li>
+          <li>{t('training.rec1')}</li>
+          <li>{t('training.rec2')}</li>
+          <li>{t('training.rec3')}</li>
+          <li>{t('training.rec4')}</li>
         </ul>
       </div>
       <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-        <button className="btn" onClick={onRestart}>Restart</button>
+        <button className="btn" onClick={onRestart}>{t('ui.restartRound')}</button>
       </div>
     </div>
   );
